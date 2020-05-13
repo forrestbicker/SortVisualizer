@@ -1,8 +1,7 @@
 function main() {
     var arr = [7, 4, 9, 2, 4, 5, 1]
     var a = new TrackableArray(arr);
-    console.log(a.arr);
-    console.log(sorts.insertion(arr));
+    console.log(sorts.insertion(a));
 }
 
 class TrackableArray {
@@ -33,7 +32,7 @@ class TrackableArray {
 
 var sorts = {
     insertion: function (array) {
-        var arr = new TrackableArray(array);
+        var arr = array;
         for (var i = 1; i < arr.n; i++) {
             var key = arr.get(i);
             var j = i - 1;
@@ -44,5 +43,10 @@ var sorts = {
             arr.set(j + 1, key);
         }
         return arr;
+    },
+    merge: function (array) {
+        var arr = new TrackableArray(array);
     }
 }
+
+var helpers
