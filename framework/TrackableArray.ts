@@ -1,4 +1,4 @@
-class TrackableArray { // todo: make extend Array<number>
+export class TrackableArray { // todo: make extend Array<number>
     arr: Array<number>;
     acsesses: number;
     modifications: number;
@@ -8,4 +8,40 @@ class TrackableArray { // todo: make extend Array<number>
         this.acsesses = 0;
         this.modifications = 0;
     }
+
+    get(ix: number): number {
+        this.acsesses++;
+        // this.updateCounters();
+        return this.arr[ix];
+    }
+
+    set(ix: number, value: number): void {
+        this.modifications++;
+        this.arr[ix] = value;
+        // this.updateCounters();
+        // this.updatePositions();
+    }
+
+    push(value: number): void {
+        this.modifications++;
+        this.arr.push(value);
+    }
+
+    pop(): void {
+        this.modifications++;
+        this.arr.pop();
+    }
+    
+    popRetrive(): number {
+        this.modifications++;
+        this.acsesses++;
+        return this.arr.pop();
+    }
+
+    // todo: determine how pop shoudl work, will it incromenet modifications or acsesses or both, or more than likley there will be 2 pop methods, or maybe just a remove method to be used in conjunction with get
+
+    getLength(): number {
+        return this.arr.length;
+    }
+
 }
