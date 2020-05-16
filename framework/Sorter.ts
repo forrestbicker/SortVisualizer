@@ -1,10 +1,10 @@
 import { SortingTask } from "./SortingTask"
 
 export abstract class Sorter {
-    sortingTask: SortingTask;
+    task: SortingTask;
 
     constructor(sortingTask: SortingTask) {
-        this.sortingTask = sortingTask;
+        this.task = sortingTask;
     }
 
     abstract sort(): SortingTask;
