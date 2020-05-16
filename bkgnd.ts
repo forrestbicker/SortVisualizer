@@ -5,40 +5,6 @@ function main() {
 }
 console.log("hello there");
 
-class SortingTask {
-    arr: Array<number>;
-    n: number;
-    aux: {};
-    acsesses: number;
-    modifications: number;
-
-    constructor(array: Array<number>) {
-        this.arr = array;
-        this.n = array.length;
-        this.aux = {};
-
-        this.acsesses = 0;
-        this.modifications = 0;
-        // auxilary
-    }
-
-    get(ix: number): number {
-        this.acsesses++;
-        this.updateCounters();
-        return this.arr[ix];
-    }
-
-    set(ix: number, value: number): void {
-        this.modifications++;
-        this.arr[ix] = value;
-        this.updateCounters();
-        this.updatePositions();
-    }
-
-    updateCounters(): void { }
-    updatePositions(): void { }
-}
-
 var sorts = {
     insertionSort: function (sortingTask: SortingTask): SortingTask {
         var arr = sortingTask;
