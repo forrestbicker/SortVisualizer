@@ -32,7 +32,7 @@ export class TrackableArray { // todo: make extend Array<number>
         this.arr.pop();
     }
     
-    popRetrive(): number {
+    popRetrive(): number | undefined {
         this.modifications++;
         this.acsesses++;
         return this.arr.pop();
