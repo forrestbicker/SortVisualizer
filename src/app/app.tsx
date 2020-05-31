@@ -21,4 +21,7 @@ function main() {
   for (var i = 0; i < 100; i++) {
     arr.push(Number(10 * Math.random()));
   }
+  var s: Sorter = sorts.insertion(
+    new SortingTask(arr, document.getElementById("acsesses")!)
+  );
 }
