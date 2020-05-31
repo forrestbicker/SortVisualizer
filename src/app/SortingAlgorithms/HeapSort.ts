@@ -3,7 +3,7 @@ import { TreeUtil } from "../framework/TreeUtil";
 import { TrackableArray } from "../framework/TrackableArray";
 import { SortingTask } from "../framework/SortingTask"
 
-class HeapSort extends Sorter {
+export class HeapSort extends Sorter {
     sort(): SortingTask {
         return this.task;
     }

@@ -2,7 +2,7 @@ import { Sorter } from "../framework/Sorter";
 import { SortingTask } from "../framework/SortingTask"
 
 // n^2
-class InsertionSort extends Sorter {
+export class InsertionSort extends Sorter {
     sort(): SortingTask {
         for (var i = 1; i < this.task.arr.getLength(); i++) {
             let key = this.task.arr.get(i);
