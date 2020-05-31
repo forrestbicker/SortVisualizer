@@ -3,3 +3,14 @@ import { Sorter } from "./framework/Sorter";
 import { MergeSort } from "./SortingAlgorithms/MergeSort";
 import { InsertionSort } from "./SortingAlgorithms/InsertionSort";
 import { HeapSort } from "./SortingAlgorithms/HeapSort";
+var sorts = {
+  merge: function (sortingTask: SortingTask): MergeSort {
+    return new MergeSort(sortingTask);
+  },
+  insertion: function (sortingTask: SortingTask): InsertionSort {
+    return new InsertionSort(sortingTask);
+  },
+  heapSort: function (sortingTask: SortingTask): HeapSort {
+    return new HeapSort(sortingTask);
+  },
+};
