@@ -27,30 +27,44 @@ export class TrackableArray { // todo: make extend Array<number>
     get(ix: number): number {
         this.acsesses++;
         // this.updateCounters();
+
+        this.updateCounters();
+
         return this.arr[ix];
     }
 
     set(ix: number, value: number): void {
         this.modifications++;
         this.arr[ix] = value;
-        // this.updateCounters();
-        // this.updatePositions();
+
+        this.updateCounters();
+        this.updateArray();
     }
 
     push(value: number): void {
         this.modifications++;
         this.arr.push(value);
+
+        this.updateCounters();
+        this.updateArray();
     }
 
     pop(): void {
         this.modifications++;
         this.arr.pop();
+
+        this.updateArray();
     }
-    
+
     popRetrive(): number | undefined {
         this.modifications++;
         this.acsesses++;
-        return this.arr.pop();
+        let poped: number | undefined = this.arr.pop();
+
+        this.updateCounters();
+        this.updateArray();
+
+        return poped;
     }
 
     // todo: determine how pop shoudl work, will it incromenet modifications or acsesses or both, or more than likley there will be 2 pop methods, or maybe just a remove method to be used in conjunction with get
@@ -58,5 +72,4 @@ export class TrackableArray { // todo: make extend Array<number>
     getLength(): number {
         return this.arr.length;
     }
-
 }
