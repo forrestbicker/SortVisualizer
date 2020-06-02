@@ -12,6 +12,16 @@ export class TrackableArray { // todo: make extend Array<number>
         this.modifications = 0;
         this.canvas = canvas;
 
+        this.updateCounters = function () {
+            // this.canvas.textContent = String(this.acsesses);
+            // this.canvas.textContent = String(this.modifications);
+            setTimeout(function (num: number) { canvas.textContent = String(num) }, 1, this.acsesses);
+            ;
+        };
+
+        this.updateArray = function () {
+            // arrayUpdater(this.arr)
+        };
     }
 
     get(ix: number): number {
