@@ -2,11 +2,16 @@ export class TrackableArray { // todo: make extend Array<number>
     arr: Array<number>;
     acsesses: number;
     modifications: number;
+    canvas: HTMLElement;
+    updateCounters: Function;
+    updateArray: Function;
 
-    constructor(array: Array<number>) {
+    constructor(array: Array<number>, canvas: HTMLElement, isAux: boolean) {
         this.arr = array;
         this.acsesses = 0;
         this.modifications = 0;
+        this.canvas = canvas;
+
     }
 
     get(ix: number): number {
