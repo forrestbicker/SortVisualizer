@@ -15,7 +15,7 @@ export class SortingTask {
     }
 
     generateNewAuxID(): number {
-        this.auxiliaryArrs.push(new TrackableArray([]));
+        this.auxiliaryArrs.push(new TrackableArray([], this.canvas, true));
         return this.auxiliaryArrs.length - 1;
     }
 
