@@ -20,6 +20,11 @@ export class SortingTask {
     }
 
     getData(): any { };
-    updateCounters(): void { };
-    updatePositions(): void { };
+
+    updateCounters(acsesses: number, modifications: number): void {
+        // console.log(`acsesses: ${acsesses}`)
+        this.canvas.textContent = String(acsesses);
+        // console.log(`modifications: ${acsesses}`)
+    };
+    updatePositions(arr: Array<number>): void { };
 }
