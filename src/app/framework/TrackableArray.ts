@@ -56,19 +56,6 @@ export class TrackableArray { // todo: make extend Array<number>
         this.updateArray();
     }
 
-    popRetrive(): number | undefined {
-        this.modifications++;
-        this.acsesses++;
-        let poped: number | undefined = this.arr.pop();
-
-        this.updateCounters();
-        this.updateArray();
-
-        return poped;
-    }
-
-    // todo: determine how pop shoudl work, will it incromenet modifications or acsesses or both, or more than likley there will be 2 pop methods, or maybe just a remove method to be used in conjunction with get
-
     getLength(): number {
         return this.arr.length;
     }
