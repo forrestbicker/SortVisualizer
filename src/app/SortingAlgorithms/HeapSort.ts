@@ -13,8 +13,8 @@ export class HeapSort extends Sorter {
     }
 
     maxHeapify(ix: number): void {
-        let left = TreeUtil.getLeftChild(this.task.arr, ix);
-        let right = TreeUtil.getRightChild(this.task.arr, ix);
+        let left = TreeUtil.getLeftChild(this.task.tArr, ix);
+        let right = TreeUtil.getRightChild(this.task.tArr, ix);
 
 
     }

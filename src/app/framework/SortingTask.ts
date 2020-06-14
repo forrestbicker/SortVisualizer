@@ -7,7 +7,7 @@ export class SortingTask {
     // comparisons: number;
 
     constructor(array: Array<number>, canvas: HTMLElement) {
-        this.arr = new TrackableArray(array, canvas, false);
+        this.tArr = new TrackableArray(array, this.drawer);
         this.auxiliaryArrs = new Array<TrackableArray>();
         this.canvas = canvas;
         // this.swaps = 0;
@@ -27,4 +27,6 @@ export class SortingTask {
         // console.log(`modifications: ${acsesses}`)
     };
     updatePositions(arr: Array<number>): void { };
+            this.tArr.arr[cutoff] = this.tArr.arr[randIx];
+            this.tArr.arr[randIx] = temp;
 }

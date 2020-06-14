@@ -4,7 +4,7 @@ import { SortingTask } from "../framework/SortingTask"
 
 export class MergeSort extends Sorter {
     sort(): SortingTask {
-        this.sortA(this.task.arr);
+        this.sortA(this.task.tArr);
         return this.task;
     }
 
