@@ -15,5 +15,9 @@ export abstract class Sorter {
         this.task.tArr.display();
         // clearInterval(id); // stops display loop
     }
+
+    verify(): number {
+        return 0 // for sorted, 1 for not sorted
+    }
 }
 
