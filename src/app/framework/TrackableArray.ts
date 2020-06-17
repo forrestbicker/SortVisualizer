@@ -1,4 +1,7 @@
-export class TrackableArray { // todo: make extend Array<number>
+import { ArrayDrawer } from "./ArrayDrawer";
+
+export class TrackableArray { // todo: make extend Array<number>, MAYBE THATS NOT DESIRABLE because then u have easy acsess to methods that wll not incements counters when called  
+
     arr: Array<number>;
     acsesses: number;
     modifications: number;
