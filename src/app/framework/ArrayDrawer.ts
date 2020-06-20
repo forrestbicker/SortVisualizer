@@ -50,4 +50,31 @@ export class ArrayDrawer { // TODO: each sorting tash should have an array drawe
         }
     }
 
+    updateCounters(tArr: TrackableArray): void { // TODO: insteead of taking arguments, make two incrementors for the 2 vars that redir to setCounter, learn how to locate a div from within the canvas, then with that read its text conent, and asign it ot 1 + that number
+        if (tArr.isAux) {
+
+        } else {
+            setTimeout(this.setCounter, 10, this.counterCanvas, tArr.acsesses, tArr.modifications);
+        }
+
+
+
+        // var newElement: SVGTextElement = document.createElementNS("http://www.w3.org/2000/svg", 'text');
+        // newElement.textContent = `
+        // Acsesses     : ${acsesses}
+        // Modifications: ${modifications}`
+
+        // canvas.append(newElement)
+        // }, 10, this.canvas);
+
+    };
+
+    updatePositions(tArr: TrackableArray): void { // TODO: this gets wierd slightly when u pop an element, instead we should try to restrict to only switches
+        if (tArr.isAux) {
+
+        } else {
+            setTimeout(this.setPositions, 10, this, tArr.arr);
+        }
+    };
+
 }
