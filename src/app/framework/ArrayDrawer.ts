@@ -24,4 +24,15 @@ export class ArrayDrawer { // TODO: each sorting tash should have an array drawe
         this.posCanvas.setAttribute("height", String(canvasHeight));
 
     }
+
+    setCounter(canvas: HTMLElement, acsesses: number, modifications: number) {
+        canvas.innerHTML = `
+        <text x="20" y="35">
+        Acsesses     : ${acsesses}
+        <br>
+        Modifications: ${modifications}
+        </text>`
+
+    }
+
 }
