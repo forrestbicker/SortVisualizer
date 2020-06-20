@@ -35,4 +35,19 @@ export class ArrayDrawer { // TODO: each sorting tash should have an array drawe
 
     }
 
+    setPositions(self: ArrayDrawer, arr: Array<number>) {
+        self.posCanvas.innerHTML = "";
+        let canvasHeight: number = Number(self.posCanvas.getAttribute("height"));
+        for (var i = 0; i < arr.length; i++) {
+            let height: number = arr[i] * self.cHeightUnit;
+            self.posCanvas.innerHTML += `
+                <rect
+                width="${self.cWidthUnit}"
+                height="${height}"
+                x="${i * self.cWidthUnit}"
+                y="${canvasHeight - height}">
+                </rect>`;
+        }
+    }
+
 }
