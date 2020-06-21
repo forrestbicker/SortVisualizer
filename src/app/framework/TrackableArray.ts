@@ -5,26 +5,20 @@ export class TrackableArray { // todo: make extend Array<number>, MAYBE THATS NO
     arr: Array<number>;
     acsesses: number;
     modifications: number;
-    canvas: HTMLElement;
-    updateCounters: Function;
-    updateArray: Function;
+    drawer: ArrayDrawer;
+    isAux: boolean; // aux arrs are NOT drawable, primary arrs are, only one drawable arr should be active at a time
 
-    constructor(array: Array<number>, canvas: HTMLElement, isAux: boolean) {
+    constructor(array: Array<number>, drawer: ArrayDrawer) {
         this.arr = array;
         this.acsesses = 0;
         this.modifications = 0;
-        this.canvas = canvas;
 
-        this.updateCounters = function () {
-            // this.canvas.textContent = String(this.acsesses);
-            // this.canvas.textContent = String(this.modifications);
-            setTimeout(function (num: number) { canvas.textContent = String(num) }, 1, this.acsesses);
-            ;
-        };
-
-        this.updateArray = function () {
-            // arrayUpdater(this.arr)
-        };
+        if (this.arr.length > 0) {
+            this.isAux = false;
+        } else {
+            this.isAux = true;
+        }
+        this.drawer = drawer;
     }
 
     get(ix: number): number {
