@@ -8,8 +8,10 @@ export class SortingTask {
     // swaps: number;
     // comparisons: number;
 
-    constructor(array: Array<number>, counterCanvas: HTMLElement, posCanvas: HTMLElement) {
-        this.drawer = new ArrayDrawer(array.length, counterCanvas, posCanvas);
+    constructor(array: Array<number>, drawer: ArrayDrawer) {
+        this.drawer = drawer;
+        this.drawer.setPrimaryArrayLength(array.length);
+        
         this.tArr = new TrackableArray(array, this.drawer);
         this.auxiliaryArrs = new Array<TrackableArray>();
         // this.comparisons = 0;
@@ -17,7 +19,7 @@ export class SortingTask {
     }
 
     generateNewAuxID(): number {
-        this.auxiliaryArrs.push(new TrackableArray([], this.canvas, true));
+        this.auxiliaryArrs.push(new TrackableArray([], this.drawer));
         return this.auxiliaryArrs.length - 1;
     }
 

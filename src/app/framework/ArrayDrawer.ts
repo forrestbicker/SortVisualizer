@@ -10,24 +10,41 @@ export class ArrayDrawer { // TODO: each sorting tash should have an array drawe
     counterCanvas: HTMLElement;
     posCanvas: HTMLElement;
 
-    seetCounter: any;
+    currentLength: number = 0;
 
-    cWidthUnit: number;
-    cHeightUnit: number;
+    canvasWidth: number = 0;
+    canvasHeight: number = 0;
 
-    constructor(arrLength: number, counterCanvas: HTMLElement, posCanvas: HTMLElement) { // TODO: condense p and aux arrays to one, canvas will be null for aux, additional struct param: counter loc, will write all counter updates there and all pos update to canvas (which is null for aux cuz no need to update pos for aux)
+    cWidthUnit: number = 0;
+    cHeightUnit: number = 0;
+
+    updateStack: any[][];
+
+
+    constructor(counterCanvas: HTMLElement, posCanvas: HTMLElement) { // TODO: condense p and aux arrays to one, canvas will be null for aux, additional struct param: counter loc, will write all counter updates there and all pos update to canvas (which is null for aux cuz no need to update pos for aux)
         this.counterCanvas = counterCanvas;
         this.posCanvas = posCanvas;
+        this.updateStack = [];
 
+        // updates.shift
 
-        let canvasWidth: number = 500;
-        let canvasHeight: number = 500;
-        this.cWidthUnit = 1.0 * canvasWidth / arrLength; // assumes len = max - 1 (true if is consecuitive range of ints)
-        this.cHeightUnit = 1.0 * canvasHeight / arrLength;
+        this.resizeCanvas(500, 500);
+    }
 
-        this.posCanvas.setAttribute("width", String(canvasWidth));
-        this.posCanvas.setAttribute("height", String(canvasHeight));
+    resizeCanvas(width: number, height: number) {
+        this.canvasWidth = width;
+        this.canvasHeight = height;
 
+        this.posCanvas.setAttribute("width", String(this.canvasWidth));
+        this.posCanvas.setAttribute("height", String(this.canvasHeight));
+
+        this.setPrimaryArrayLength(this.currentLength);
+    }
+
+    setPrimaryArrayLength(length: number) {
+        this.currentLength = length;
+        this.cWidthUnit = 1.0 * this.canvasWidth / length; // assumes len = max - 1 (true if is consecuitive range of ints)
+        this.cHeightUnit = 1.0 * this.canvasHeight / length;
     }
 
     setCounter(canvas: HTMLElement, acsesses: number, modifications: number) {

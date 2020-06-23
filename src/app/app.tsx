@@ -25,3 +25,7 @@ function main() {
     new SortingTask(arr, document.getElementById("acsesses")!)
   );
 }
+let drawer = new ArrayDrawer(
+  document.getElementById("counters")!,
+  document.getElementById("positions")!
+);
