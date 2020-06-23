@@ -1,6 +1,10 @@
 import { TrackableArray } from "./TrackableArray";
 import { Timer } from "./Timer";
 
+const UpdateType = {
+    COUNTER: 0,
+    POSITION: 1,
+}
 export class ArrayDrawer { // TODO: each sorting tash should have an array drawer that is passed down and can tell aux from primary on method call
 
     counterCanvas: HTMLElement;
