@@ -1,17 +1,19 @@
 import { TrackableArray } from "./TrackableArray";
+import { ArrayDrawer } from "./ArrayDrawer";
 export class SortingTask {
-    arr: TrackableArray;
+    tArr: TrackableArray;
     auxiliaryArrs: Array<TrackableArray>;
-    canvas: HTMLElement;
+    drawer: ArrayDrawer;
+
     // swaps: number;
     // comparisons: number;
 
-    constructor(array: Array<number>, canvas: HTMLElement) {
+    constructor(array: Array<number>, counterCanvas: HTMLElement, posCanvas: HTMLElement) {
+        this.drawer = new ArrayDrawer(array.length, counterCanvas, posCanvas);
         this.tArr = new TrackableArray(array, this.drawer);
         this.auxiliaryArrs = new Array<TrackableArray>();
-        this.canvas = canvas;
-        // this.swaps = 0;
         // this.comparisons = 0;
+
     }
 
     generateNewAuxID(): number {
