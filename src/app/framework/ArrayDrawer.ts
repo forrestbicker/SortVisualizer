@@ -1,4 +1,5 @@
 import { TrackableArray } from "./TrackableArray";
+import { Timer } from "./Timer";
 
 export class ArrayDrawer { // TODO: each sorting tash should have an array drawer that is passed down and can tell aux from primary on method call
 
@@ -74,6 +75,7 @@ export class ArrayDrawer { // TODO: each sorting tash should have an array drawe
 
         } else {
             setTimeout(this.setPositions, 10, this, tArr.arr);
+            // Timer.sleep(110);
         }
     };
 
