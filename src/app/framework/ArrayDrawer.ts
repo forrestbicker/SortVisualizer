@@ -1,5 +1,5 @@
 import { TrackableArray } from "./TrackableArray";
-import { Timer } from "./Timer";
+import { Util } from "./Util";
 
 const UpdateType = {
     COUNTER: 0,
