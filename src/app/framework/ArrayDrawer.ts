@@ -100,4 +100,5 @@ export class ArrayDrawer { // TODO: each sorting tash should have an array drawe
         }
     };
 
+    // TODO: idea of drawing directly to screen is moot beause way to slow. instead we will do new schedueler. it will work very well btu thte only problem is that it has high waiting time because must sort whole array first but bopefully if computers are fast enugh it should take less than 1 seccond. i think this will do well actually. we just push every frame into a stack and then we can do a loop to scheudel them at delayed intervals.
 }
