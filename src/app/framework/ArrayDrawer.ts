@@ -59,6 +59,7 @@ export class ArrayDrawer { // TODO: each sorting tash should have an array drawe
     }
 
     setPositions(arr: number[]) { // todo: fix all array<number> to number<> and the likes
+        let newInnerHTML: String = ""
         let canvasHeight: number = Number(this.posCanvas.getAttribute("height"));
         for (var i = 0; i < arr.length; i++) {
             let height: number = arr[i] * this.cHeightUnit;
@@ -70,6 +71,7 @@ export class ArrayDrawer { // TODO: each sorting tash should have an array drawe
                 y="${canvasHeight - height}">
                 </rect>`;
         }
+        this.posCanvas.innerHTML = newInnerHTML;
     }
 
     updateCounters(tArr: TrackableArray): void { // TODO: insteead of taking arguments, make two incrementors for the 2 vars that redir to setCounter, learn how to locate a div from within the canvas, then with that read its text conent, and asign it ot 1 + that number
