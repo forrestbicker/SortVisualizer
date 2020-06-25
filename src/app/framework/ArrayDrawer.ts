@@ -11,6 +11,7 @@ export class ArrayDrawer { // TODO: each sorting tash should have an array drawe
     posCanvas: HTMLElement;
 
     currentLength: number = 0;
+    currentMax: number = 0;
 
     canvasWidth: number = 0;
     canvasHeight: number = 0;
@@ -38,13 +39,13 @@ export class ArrayDrawer { // TODO: each sorting tash should have an array drawe
         this.posCanvas.setAttribute("width", String(this.canvasWidth));
         this.posCanvas.setAttribute("height", String(this.canvasHeight));
 
-        this.setPrimaryArrayLength(this.currentLength);
+        this.setPrimaryArrayLength(this.currentLength, this.currentMax);
     }
 
-    setPrimaryArrayLength(length: number) {
+    setPrimaryArrayLength(length: number, max: number) {
         this.currentLength = length;
         this.cWidthUnit = 1.0 * this.canvasWidth / length; // assumes len = max - 1 (true if is consecuitive range of ints)
-        this.cHeightUnit = 1.0 * this.canvasHeight / length;
+        this.cHeightUnit = 1.0 * this.canvasHeight / max; // 
     }
 
     setCounter(canvas: HTMLElement, acsesses: number, modifications: number) {
