@@ -48,26 +48,25 @@ export class ArrayDrawer { // TODO: each sorting tash should have an array drawe
         this.cHeightUnit = 1.0 * this.canvasHeight / max; // 
     }
 
-    setCounter(canvas: HTMLElement, acsesses: number, modifications: number) {
-        canvas.innerHTML = `
+
+    setCounter(acsesses: number, modifications: number) {
+        this.counterCanvas.innerHTML = `
         <text x="20" y="35">
         Acsesses     : ${acsesses}
         <br>
         Modifications: ${modifications}
         </text>`
-
     }
 
-    setPositions(self: ArrayDrawer, arr: Array<number>) {
-        self.posCanvas.innerHTML = "";
-        let canvasHeight: number = Number(self.posCanvas.getAttribute("height"));
+    setPositions(arr: number[]) { // todo: fix all array<number> to number<> and the likes
+        let canvasHeight: number = Number(this.posCanvas.getAttribute("height"));
         for (var i = 0; i < arr.length; i++) {
-            let height: number = arr[i] * self.cHeightUnit;
-            self.posCanvas.innerHTML += `
+            let height: number = arr[i] * this.cHeightUnit;
+            newInnerHTML += `
                 <rect
-                width="${self.cWidthUnit}"
+                width="${this.cWidthUnit}"
                 height="${height}"
-                x="${i * self.cWidthUnit}"
+                x="${i * this.cWidthUnit}"
                 y="${canvasHeight - height}">
                 </rect>`;
         }
@@ -77,7 +76,6 @@ export class ArrayDrawer { // TODO: each sorting tash should have an array drawe
         if (tArr.isAux) {
 
         } else {
-            setTimeout(this.setCounter, 10, this.counterCanvas, tArr.acsesses, tArr.modifications);
         }
 
 
@@ -96,7 +94,6 @@ export class ArrayDrawer { // TODO: each sorting tash should have an array drawe
         if (tArr.isAux) {
 
         } else {
-            setTimeout(this.setPositions, 10, this, tArr.arr);
             // Timer.sleep(110);
         }
     };
