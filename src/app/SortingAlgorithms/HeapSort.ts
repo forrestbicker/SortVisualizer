@@ -1,9 +1,9 @@
-import { Sorter } from "../framework/Sorter";
-import { TreeUtil } from "../framework/TreeUtil";
+import { ASorter } from "../framework/ASorter";
+import { TreeUtil } from "../Utility/TreeUtil";
 import { TrackableArray } from "../framework/TrackableArray";
 import { SortingTask } from "../framework/SortingTask"
 
-export class HeapSort extends Sorter {
+export class HeapSort extends ASorter {
     sort(): SortingTask {
         return this.task;
     }
