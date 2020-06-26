@@ -1,4 +1,4 @@
-import { TrackableArray } from "./TrackableArray";
+import { TrackableArray } from "../framework/TrackableArray";
 
 export class TreeUtil {
 
