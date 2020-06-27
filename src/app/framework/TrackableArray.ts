@@ -23,34 +23,32 @@ export class TrackableArray { // todo: make extend Array<number>, MAYBE THATS NO
 
     get(ix: number): number {
         this.acsesses++;
-        // this.updateCounters();
-
-        this.updateCounters();
-
+        this.drawer.pushCounterUpdate(this);
         return this.arr[ix];
     }
 
     set(ix: number, value: number): void {
-        this.modifications++;
         this.arr[ix] = value;
 
-        this.updateCounters();
-        this.updateArray();
+        this.modifications++;
+        this.drawer.pushCounterUpdate(this);
+        this.drawer.pushPositionUpdate(this);
     }
 
     push(value: number): void {
-        this.modifications++;
         this.arr.push(value);
 
-        this.updateCounters();
-        this.updateArray();
+        this.modifications++;
+        this.drawer.pushCounterUpdate(this);
+        this.drawer.pushPositionUpdate(this);
     }
 
     pop(): void {
-        this.modifications++;
         this.arr.pop();
 
-        this.updateArray();
+        this.modifications++;
+        this.drawer.pushPositionUpdate(this);
+    }
     }
 
     getLength(): number {

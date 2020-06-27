@@ -55,7 +55,7 @@ export class ArrayDrawer { // TODO: each sorting tash should have an array drawe
     }
 
     setPositions(arr: number[]) { // todo: fix all array<number> to number<> and the likes
-        let newInnerHTML: String = ""
+        let newInnerHTML: string = ""
         let canvasHeight: number = Number(this.posCanvas.getAttribute("height"));
         for (var i = 0; i < arr.length; i++) {
             let height: number = arr[i] * this.cHeightUnit;
@@ -70,10 +70,9 @@ export class ArrayDrawer { // TODO: each sorting tash should have an array drawe
         this.posCanvas.innerHTML = newInnerHTML;
     }
 
-    updateCounters(tArr: TrackableArray): void { // TODO: insteead of taking arguments, make two incrementors for the 2 vars that redir to setCounter, learn how to locate a div from within the canvas, then with that read its text conent, and asign it ot 1 + that number
-        if (tArr.isAux) {
+    pushCounterUpdate(tArr: TrackableArray): void { // TODO: insteead of taking arguments, make two incrementors for the 2 vars that redir to setCounter, learn how to locate a div from within the canvas, then with that read its text conent, and asign it ot 1 + that number
 
-        } else {
+    pushPositionUpdate(tArr: TrackableArray): void { // TODO: this gets wierd slightly when u pop an element, instead we should try to restrict to only switches NOPE, because non comparison-only paragrims exist, i.e. radix sort
         }
 
 
