@@ -71,9 +71,22 @@ export class ArrayDrawer { // TODO: each sorting tash should have an array drawe
     }
 
     pushCounterUpdate(tArr: TrackableArray): void { // TODO: insteead of taking arguments, make two incrementors for the 2 vars that redir to setCounter, learn how to locate a div from within the canvas, then with that read its text conent, and asign it ot 1 + that number
+        this.updateStack.push({
+            type: UpdateType.COUNTER,
+            ixAux: tArr.isAux,
+            acsesses: tArr.acsesses,
+            modifications: tArr.modifications
+        });
+    };
 
     pushPositionUpdate(tArr: TrackableArray): void { // TODO: this gets wierd slightly when u pop an element, instead we should try to restrict to only switches NOPE, because non comparison-only paragrims exist, i.e. radix sort
+        if (!tArr.isAux) {
+            this.updateStack.push({
+                type: UpdateType.POSITION,
+                arr: Util.copyOf(tArr.arr)
+            });
         }
+    };
 
 
 
