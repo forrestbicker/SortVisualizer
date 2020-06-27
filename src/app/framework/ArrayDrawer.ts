@@ -1,10 +1,6 @@
 import { TrackableArray } from "./TrackableArray";
-import { Util } from "./Util";
+import { Util, UpdateType } from "../Utility/Util";
 
-const UpdateType = {
-    COUNTER: 0,
-    POSITION: 1,
-}
 export class ArrayDrawer { // TODO: each sorting tash should have an array drawer that is passed down and can tell aux from primary on method call
 
     counterCanvas: HTMLElement;
@@ -19,7 +15,7 @@ export class ArrayDrawer { // TODO: each sorting tash should have an array drawe
     cWidthUnit: number = 0;
     cHeightUnit: number = 0;
 
-    updateStack: any[][];
+    updateStack: any[];
 
 
     constructor(counterCanvas: HTMLElement, posCanvas: HTMLElement) { // TODO: condense p and aux arrays to one, canvas will be null for aux, additional struct param: counter loc, will write all counter updates there and all pos update to canvas (which is null for aux cuz no need to update pos for aux)
