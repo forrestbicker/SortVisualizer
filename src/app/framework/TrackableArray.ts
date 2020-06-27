@@ -49,6 +49,11 @@ export class TrackableArray { // todo: make extend Array<number>, MAYBE THATS NO
         this.modifications++;
         this.drawer.pushPositionUpdate(this);
     }
+
+    swap(a: number, b: number): void { // added layer of abstraction above normal functions
+        let tmp = this.get(a);
+        this.set(a, this.arr[b]);
+        this.set(b, tmp); // TODO: express tmp as an aux arr (or add a O(1) register) for const space tracking
     }
 
     getLength(): number {
