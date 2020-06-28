@@ -1,5 +1,6 @@
 import { TrackableArray } from "./TrackableArray";
 import { ArrayDrawer } from "./ArrayDrawer";
+import { Util } from "../Utility/Util";
 export class SortingTask {
     tArr: TrackableArray;
     auxiliaryArrs: Array<TrackableArray>;
@@ -10,7 +11,7 @@ export class SortingTask {
 
     constructor(array: Array<number>, drawer: ArrayDrawer) {
         this.drawer = drawer;
-        this.drawer.setPrimaryArrayLength(array.length);
+        this.drawer.setPrimaryArrayLength(array.length, Util.max(array));
         
         this.tArr = new TrackableArray(array, this.drawer);
         this.auxiliaryArrs = new Array<TrackableArray>();
