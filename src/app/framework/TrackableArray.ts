@@ -63,6 +63,12 @@ export class TrackableArray { // todo: make extend Array<number>, MAYBE THATS NO
     getLength(): number {
         return this.arr.length;
     }
+
+    display(): void {
+        this.drawer.setCounter(this.acsesses, this.modifications);
+        this.drawer.setPositions(this.arr);
+    }
+
     toString(): String {
         let out: String = "[";
         out += String(this.arr[0]);
