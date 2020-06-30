@@ -43,6 +43,10 @@ export class TrackableArray { // todo: make extend Array<number>, MAYBE THATS NO
         this.drawer.pushPositionUpdate(this);
     }
 
+    // remove(ix: number): void {
+    //     this.arr.
+    // }
+
     pop(): void {
         this.arr.pop();
 
@@ -58,5 +62,15 @@ export class TrackableArray { // todo: make extend Array<number>, MAYBE THATS NO
 
     getLength(): number {
         return this.arr.length;
+    }
+    toString(): String {
+        let out: String = "[";
+        out += String(this.arr[0]);
+        for (var i = 1; i < this.arr.length; i++) {
+            out += ", ";
+            out += String(i);
+        }
+        out += "]";
+        return out;
     }
 }
