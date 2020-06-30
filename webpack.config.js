@@ -1,8 +1,8 @@
 module.exports = {
     entry: "./src/app/app.tsx",
     output: {
-        path: __dirname + "/public",
-        filename: "build/bundle.js"
+        path: __dirname + "/docs",
+        filename: "bundle.js"
     },
     resolve: {
         extensions: [".ts", ".tsx", ".js"]
