@@ -20,9 +20,6 @@ export class MergeSort extends ASorter {
         }
     }
 
-        for (var i = arr.getLength() / 2; i < arr.getLength(), i++;) {
-            this.task.auxiliaryArrs[right].push(arr.get(i));
-        }
 
         // recursivley sort the two haves and then merge
         return this.merge(this.sortA(this.task.auxiliaryArrs[right]), this.sortA(this.task.auxiliaryArrs[left]));
