@@ -5,11 +5,11 @@ import { Util } from "../Utility/Util";
 
 export class MergeSort extends ASorter {
     sort(): SortingTask {
-        this.sortA(this.task.tArr);
+        this.mergeSort(0, this.task.tArr.getLength() - 1);
         return this.task;
     }
 
-    sortA(arr: TrackableArray): TrackableArray {
+    mergeSort(start: number, end: number): void { // returns array of indicies
 
         // split arr into two smaller arrs
         let left: number = this.task.generateNewAuxID();
