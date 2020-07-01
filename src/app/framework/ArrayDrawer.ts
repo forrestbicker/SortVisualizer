@@ -98,7 +98,28 @@ export class ArrayDrawer { // TODO: each sorting tash should have an array drawe
     // }
 
 
+    displayNext(): void {
+        let update = this.updateStack.shift(); // FIFO queue
+        if (update != undefined) {
+            switch (update.type) { // TODO: doing this as arrs works okay but would be better to do as dictionaries
+                case UpdateType.COUNTER:
+                    if (update.isAux) { // if is is an aux arr
+                        //  write aux array stuff
+                    } else {
+                        this.setCounter(update.acsesses, update.modifications);
+                    }
+                    break;
+
+                case UpdateType.POSITION:
+                    this.setPositions(update.arr);
+                    break;
+
+                case UpdateType.READER:
+                    break;
+            }
         }
+    }
+
 
     // TODO: idea of drawing directly to screen is moot beause way to slow. instead we will do new schedueler. it will work very well btu thte only problem is that it has high waiting time because must sort whole array first but bopefully if computers are fast enugh it should take less than 1 seccond. i think this will do well actually. we just push every frame into a stack and then we can do a loop to scheudel them at delayed intervals.
 }
