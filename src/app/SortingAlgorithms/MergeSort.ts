@@ -20,12 +20,9 @@ export class MergeSort extends ASorter {
         }
     }
 
+    merge(start: number, mid: number, end: number): void {
 
-        // recursivley sort the two haves and then merge
-        return this.merge(this.sortA(this.task.auxiliaryArrs[right]), this.sortA(this.task.auxiliaryArrs[left]));
-    }
 
-    merge(leftArr: TrackableArray, rightArr: TrackableArray): TrackableArray {
         let leftPointerIx: number = 0;
         let rightPointerIx: number = 0;
 
