@@ -97,6 +97,12 @@ export class ArrayDrawer { // TODO: each sorting tash should have an array drawe
     //     clearInterval(this.intervalID!);
     // }
 
+    display(delay: number): void {
+        let len: number = this.updateStack.length;
+        for (var i = 0; i < len; i++) {
+            setTimeout(function (self: ArrayDrawer) { self.displayNext() }, i * delay, this);
+        }
+    }
 
     displayNext(): void {
         let update = this.updateStack.shift(); // FIFO queue
