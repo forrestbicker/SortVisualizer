@@ -19,9 +19,9 @@ export class SortingTask {
 
     }
 
-    generateNewAuxID(): number {
+    generateNewAuxArr(): TrackableArray {
         this.auxiliaryArrs.push(new TrackableArray([], this.drawer));
-        return this.auxiliaryArrs.length - 1;
+        return this.auxiliaryArrs[this.auxiliaryArrs.length - 1];
     }
 
     getData(): any { };
