@@ -10,14 +10,15 @@ export class MergeSort extends ASorter {
     }
 
     mergeSort(start: number, end: number): void { // returns array of indicies
+        if (start < end) {
+            let mid: number = Math.trunc((start + end) / 2);
 
-        // split arr into two smaller arrs
-        let left: number = this.task.generateNewAuxID();
-        let right: number = this.task.generateNewAuxID();
+            this.mergeSort(start, mid);
+            this.mergeSort(mid + 1, end);
 
-        for (var i = 0; i < arr.getLength() / 2, i++;) {
-            this.task.auxiliaryArrs[left].push(arr.get(i));
+            this.merge(start, mid, end);
         }
+    }
 
         for (var i = arr.getLength() / 2; i < arr.getLength(), i++;) {
             this.task.auxiliaryArrs[right].push(arr.get(i));
