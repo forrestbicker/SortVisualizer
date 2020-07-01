@@ -1,8 +1,9 @@
-import { Sorter } from "../framework/Sorter";
+import { ASorter } from "../framework/ASorter";
 import { TrackableArray } from "../framework/TrackableArray";
 import { SortingTask } from "../framework/SortingTask"
+import { Util } from "../Utility/Util";
 
-export class MergeSort extends Sorter {
+export class MergeSort extends ASorter {
     sort(): SortingTask {
         this.sortA(this.task.tArr);
         return this.task;
