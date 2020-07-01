@@ -26,12 +26,6 @@ export class SortingTask {
 
     getData(): any { };
 
-    updateCounters(acsesses: number, modifications: number): void {
-        // console.log(`acsesses: ${acsesses}`)
-        this.canvas.textContent = String(acsesses);
-        // console.log(`modifications: ${acsesses}`)
-    };
-    updatePositions(arr: Array<number>): void { };
     randomize(): void {
         let cutoff: number = 0;
 
