@@ -32,8 +32,19 @@ export class SortingTask {
         // console.log(`modifications: ${acsesses}`)
     };
     updatePositions(arr: Array<number>): void { };
+    randomize(): void {
+        let cutoff: number = 0;
+
+        while (cutoff < this.tArr.arr.length) {
+            let randIx: number = cutoff + Math.trunc(Math.random() * (this.tArr.arr.length - cutoff));
+            let temp: number = this.tArr.arr[cutoff];
             this.tArr.arr[cutoff] = this.tArr.arr[randIx];
             this.tArr.arr[randIx] = temp;
+            cutoff++
+        }
+
+    }
+
     // updateCanvas(): void {
     //     // this.canvas.innerHTML = "";
     //     // this.updatePositions();
