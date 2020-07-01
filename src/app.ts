@@ -1,9 +1,9 @@
-import { SortingTask } from "./app/framework/SortingTask";
-import { ASorter } from "./app/framework/ASorter";
-import { MergeSort } from "./app/SortingAlgorithms/MergeSort";
-import { InsertionSort } from "./app/SortingAlgorithms/InsertionSort";
-import { HeapSort } from "./app/SortingAlgorithms/HeapSort";
-import { ArrayDrawer } from "./app/framework/ArrayDrawer";
+import { SortingTask } from "./framework/SortingTask";
+import { ASorter } from "./framework/ASorter";
+import { MergeSort } from "./SortingAlgorithms/MergeSort";
+import { InsertionSort } from "./SortingAlgorithms/InsertionSort";
+import { HeapSort } from "./SortingAlgorithms/HeapSort";
+import { ArrayDrawer } from "./framework/ArrayDrawer";
 
 var sorts: { [id: string]: any } = {
     merge: function (sortingTask: SortingTask): MergeSort {
