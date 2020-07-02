@@ -30,25 +30,22 @@ dropdown.innerHTML = htmlString;
 document.getElementById("startButton")!.addEventListener("click", runSort);
 
 function runSort(): void {
+    // create arr
     var arr: Array<number> = [];
     for (var i = 1; i <= 32; i++) {
         arr.push(i);
     }
     
+    // build drawer
     let drawer = new ArrayDrawer(
         document.getElementById("counters")!,
         document.getElementById("positions")!
     );
 
-    // let sort = dropdown.value;
-
-    console.log(new SortingTask(arr, drawer));
-
     let selectedSort: string = dropdown.value;
-    var s: ASorter = sorts[selectedSort](new SortingTask(arr, drawer)); // TODO: make a register or something idk, just on click cancel the sort
+    var s: ASorter = sorts[selectedSort](new SortingTask(arr, drawer)); // TODO: make a register, on click cancel the sort
     s.execute();
 }
-// console.log("done");
 
 // // docum
 // //

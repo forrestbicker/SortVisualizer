@@ -23,7 +23,6 @@ export class ArrayDrawer { // TODO: each sorting tash should have an array drawe
         this.posCanvas = posCanvas;
         this.updateStack = [];
 
-        // updates.shift
 
         this.resizeCanvas(500, 500);
     }
