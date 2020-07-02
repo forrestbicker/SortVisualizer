@@ -1,4 +1,5 @@
 module.exports = {
+    devtool: "source-map",
     entry: "./src/app.ts",
     output: {
         path: __dirname + "/docs",
