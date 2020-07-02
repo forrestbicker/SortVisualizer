@@ -28,7 +28,7 @@ export class ArrayDrawer { // TODO: each sorting tash should have an array drawe
         this.resizeCanvas(500, 500);
     }
 
-    resizeCanvas(width: number, height: number) {
+    resizeCanvas(width: number, height: number): void {
         this.canvasWidth = width;
         this.canvasHeight = height;
 
@@ -38,14 +38,14 @@ export class ArrayDrawer { // TODO: each sorting tash should have an array drawe
         this.setPrimaryArrayLength(this.currentLength, this.currentMax);
     }
 
-    setPrimaryArrayLength(length: number, max: number) {
+    setPrimaryArrayLength(length: number, max: number): void {
         this.currentLength = length;
         this.cWidthUnit = 1.0 * this.canvasWidth / length; // assumes len = max - 1 (true if is consecuitive range of ints)
         this.cHeightUnit = 1.0 * this.canvasHeight / max; // 
     }
 
 
-    setCounter(acsesses: number, modifications: number) {
+    setCounter(acsesses: number, modifications: number): void {
         this.counterCanvas.innerHTML = `
         <text x="20" y="35">
         Acsesses     : ${acsesses}
@@ -54,7 +54,7 @@ export class ArrayDrawer { // TODO: each sorting tash should have an array drawe
         </text>`
     }
 
-    setPositions(arr: number[]) { // todo: fix all array<number> to number<> and the likes
+    setPositions(arr: number[]): void { // todo: fix all array<number> to number<> and the likes
         let newInnerHTML: string = ""
         let canvasHeight: number = Number(this.posCanvas.getAttribute("height"));
         for (var i = 0; i < arr.length; i++) {
