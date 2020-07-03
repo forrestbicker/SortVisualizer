@@ -38,8 +38,9 @@ function runSort(): void {
     
     // build drawer
     let drawer = new ArrayDrawer(
-        document.getElementById("counters")!,
-        document.getElementById("positions")!
+        document.getElementById("counter")!,
+        document.getElementById("position")!,
+        document.getElementById("reader")!,
     );
 
     let selectedSort: string = dropdown.value;

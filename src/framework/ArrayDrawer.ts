@@ -3,8 +3,9 @@ import { Util, UpdateType } from "../Utility/Util";
 
 export class ArrayDrawer { // TODO: each sorting tash should have an array drawer that is passed down and can tell aux from primary on method call
 
-    counterCanvas: HTMLElement;
-    posCanvas: HTMLElement;
+    counterCanvas: Element;
+    posCanvas: Element;
+    readerCanvas: Element;
 
     currentLength: number = 0;
     currentMax: number = 0;
@@ -18,9 +19,11 @@ export class ArrayDrawer { // TODO: each sorting tash should have an array drawe
     updateStack: any[];
 
 
-    constructor(counterCanvas: HTMLElement, posCanvas: HTMLElement) { // TODO: condense p and aux arrays to one, canvas will be null for aux, additional struct param: counter loc, will write all counter updates there and all pos update to canvas (which is null for aux cuz no need to update pos for aux)
+    constructor(counterCanvas: HTMLElement, posCanvas: HTMLElement, readerCanvas: HTMLElement) { // TODO: condense p and aux arrays to one, canvas will be null for aux, additional struct param: counter loc, will write all counter updates there and all pos update to canvas (which is null for aux cuz no need to update pos for aux)
         this.counterCanvas = counterCanvas;
         this.posCanvas = posCanvas;
+        this.readerCanvas = readerCanvas;
+
         this.updateStack = [];
 
 
