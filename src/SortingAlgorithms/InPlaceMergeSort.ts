@@ -1,4 +1,4 @@
-// import { Sorter } from "../framework/Sorter";
+// import { ASorter } from "../framework/ASorter";
 // import { TrackableArray } from "../framework/TrackableArray";
 // import { SortingTask } from "../framework/SortingTask"
 
