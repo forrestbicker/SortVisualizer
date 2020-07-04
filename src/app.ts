@@ -6,10 +6,10 @@ import { HeapSort } from "./SortingAlgorithms/HeapSort";
 import { ArrayDrawer } from "./framework/ArrayDrawer";
 
 var sorts: { [id: string]: any } = {
-    merge: function (sortingTask: SortingTask): MergeSort {
+    mergeSort: function (sortingTask: SortingTask): MergeSort {
         return new MergeSort(sortingTask);
     },
-    insertion: function (sortingTask: SortingTask): InsertionSort {
+    insertionSort: function (sortingTask: SortingTask): InsertionSort {
         return new InsertionSort(sortingTask);
     },
     heapSort: function (sortingTask: SortingTask): HeapSort {
