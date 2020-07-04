@@ -102,7 +102,7 @@ export class ArrayDrawer { // TODO: each sorting tash should have an array drawe
     display(delay: number): void {
         let len: number = this.updateStack.length;
         for (var i = 0; i < len; i++) {
-            setTimeout(function (self: ArrayDrawer) { self.displayNext() }, i * delay, this);
+            setTimeout(() => { this.displayNext() }, i * delay);
         }
     }
 
