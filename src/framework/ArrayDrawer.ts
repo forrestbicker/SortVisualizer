@@ -18,6 +18,8 @@ export class ArrayDrawer { // TODO: each sorting tash should have an array drawe
 
     updateStack: any[];
 
+    READER_HEIGHT: number = 15;
+
 
     constructor(counterCanvas: HTMLElement, posCanvas: HTMLElement, readerCanvas: HTMLElement) { // TODO: condense p and aux arrays to one, canvas will be null for aux, additional struct param: counter loc, will write all counter updates there and all pos update to canvas (which is null for aux cuz no need to update pos for aux)
         this.counterCanvas = counterCanvas;
@@ -35,6 +37,9 @@ export class ArrayDrawer { // TODO: each sorting tash should have an array drawe
 
         this.posCanvas.setAttribute("width", String(this.canvasWidth));
         this.posCanvas.setAttribute("height", String(this.canvasHeight));
+        this.counterCanvas.setAttribute("width", String(this.canvasWidth));
+        this.readerCanvas.setAttribute("width", String(this.canvasWidth));
+        this.readerCanvas.setAttribute("height", String(this.READER_HEIGHT));
 
         this.setPrimaryArrayLength(this.currentLength, this.currentMax);
     }
