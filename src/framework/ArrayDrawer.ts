@@ -26,7 +26,6 @@ export class ArrayDrawer { // TODO: each sorting tash should have an array drawe
 
         this.updateStack = [];
 
-
         this.resizeCanvas(500, 500);
     }
 
@@ -112,7 +111,6 @@ export class ArrayDrawer { // TODO: each sorting tash should have an array drawe
             switch (update.type) { // TODO: doing this as arrs works okay but would be better to do as dictionaries
                 case UpdateType.COUNTER:
                     if (update.isAux) { // if is is an aux arr
-                        //  write aux array stuff
                     } else {
                         this.setCounter(update.acsesses, update.modifications);
                     }
