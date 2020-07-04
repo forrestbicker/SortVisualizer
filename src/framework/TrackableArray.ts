@@ -8,16 +8,14 @@ export class TrackableArray { // todo: make extend Array<number>, MAYBE THATS NO
     drawer: ArrayDrawer;
     isAux: boolean; // aux arrs are NOT drawable, primary arrs are, only one drawable arr should be active at a time
 
-    constructor(array: Array<number>, drawer: ArrayDrawer) {
+    constructor(array: Array<number>, drawer: ArrayDrawer, isAux: boolean) {
         this.arr = array;
         this.acsesses = 0;
         this.modifications = 0;
 
-        if (this.arr.length > 0) {
-            this.isAux = false;
-        } else {
-            this.isAux = true;
-        }
+
+        this.isAux = isAux;
+
         this.drawer = drawer;
     }
 

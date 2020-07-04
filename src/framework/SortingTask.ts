@@ -12,15 +12,15 @@ export class SortingTask {
     constructor(array: Array<number>, drawer: ArrayDrawer) {
         this.drawer = drawer;
         this.drawer.setPrimaryArrayLength(array.length, Util.max(array));
-        
-        this.tArr = new TrackableArray(array, this.drawer);
+
+        this.tArr = new TrackableArray(array, this.drawer, false);
         this.auxiliaryArrs = new Array<TrackableArray>();
         // this.comparisons = 0;
 
     }
 
     generateNewAuxArr(): TrackableArray {
-        this.auxiliaryArrs.push(new TrackableArray([], this.drawer));
+        this.auxiliaryArrs.push(new TrackableArray([], this.drawer, true));
         return this.auxiliaryArrs[this.auxiliaryArrs.length - 1];
     }
 
