@@ -21,7 +21,7 @@ export class ArrayDrawer { // TODO: each sorting tash should have an array drawe
     READER_HEIGHT: number = 15;
 
 
-    constructor(counterCanvas: HTMLElement, posCanvas: HTMLElement, readerCanvas: HTMLElement) { // TODO: condense p and aux arrays to one, canvas will be null for aux, additional struct param: counter loc, will write all counter updates there and all pos update to canvas (which is null for aux cuz no need to update pos for aux)
+    constructor(counterCanvas: HTMLElement, posCanvas: HTMLElement, readerCanvas: HTMLElement) {
         this.counterCanvas = counterCanvas;
         this.posCanvas = posCanvas;
         this.readerCanvas = readerCanvas;
@@ -95,7 +95,7 @@ export class ArrayDrawer { // TODO: each sorting tash should have an array drawe
         '></polygon>`;
     }
 
-    pushCounterUpdate(tArr: TrackableArray): void { // TODO: insteead of taking arguments, make two incrementors for the 2 vars that redir to setCounter, learn how to locate a div from within the canvas, then with that read its text conent, and asign it ot 1 + that number
+    pushCounterUpdate(tArr: TrackableArray): void {
         this.updateStack.push({
             type: UpdateType.COUNTER,
             isAux: tArr.isAux,
@@ -104,7 +104,7 @@ export class ArrayDrawer { // TODO: each sorting tash should have an array drawe
         });
     };
 
-    pushPositionUpdate(tArr: TrackableArray): void { // TODO: this gets wierd slightly when u pop an element, instead we should try to restrict to only switches NOPE, because non comparison-only paragrims exist, i.e. radix sort
+    pushPositionUpdate(tArr: TrackableArray): void {
         if (!tArr.isAux) {
             this.updateStack.push({
                 type: UpdateType.POSITION,
@@ -130,14 +130,6 @@ export class ArrayDrawer { // TODO: each sorting tash should have an array drawe
         })
     }
 
-    // startDisplayLoop(delay: number): void {
-    //     this.stopDisplayLoop();
-    //     this.intervalID = setInterval(this.displayNext, delay)
-    // }
-
-    // stopDisplayLoop() {
-    //     clearInterval(this.intervalID!);
-    // }
 
     display(delay: number): void {
         let len: number = this.updateStack.length;
@@ -149,7 +141,7 @@ export class ArrayDrawer { // TODO: each sorting tash should have an array drawe
     displayNext(): void {
         let update = this.updateStack.shift(); // FIFO queue
         if (update != undefined) {
-            switch (update.type) { // TODO: doing this as arrs works okay but would be better to do as dictionaries
+            switch (update.type) { // TODO: doing this as dicts works okay but would be better to do as some type of custom object
                 case UpdateType.COUNTER:
                     if (update.isAux) { // if is is an aux arr
                     } else {
@@ -171,7 +163,4 @@ export class ArrayDrawer { // TODO: each sorting tash should have an array drawe
             }
         }
     }
-
-
-    // TODO: idea of drawing directly to screen is moot beause way to slow. instead we will do new schedueler. it will work very well btu thte only problem is that it has high waiting time because must sort whole array first but bopefully if computers are fast enugh it should take less than 1 seccond. i think this will do well actually. we just push every frame into a stack and then we can do a loop to scheudel them at delayed intervals.
 }
