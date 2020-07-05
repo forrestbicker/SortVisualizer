@@ -58,6 +58,7 @@ export class ArrayDrawer { // TODO: each sorting tash should have an array drawe
         <br>
         Modifications: ${modifications}
         </text>`
+
     }
 
     setPositions(arr: number[]): void { // todo: fix all array<number> to number<> and the likes
@@ -74,6 +75,11 @@ export class ArrayDrawer { // TODO: each sorting tash should have an array drawe
                 </rect>`;
         }
         this.posCanvas.innerHTML = newInnerHTML;
+    }
+
+    setColor(ix: number, color: String): void {
+        let x = this.posCanvas.children[ix];
+        x.setAttribute("style", `fill:${color}`);
     }
 
     setReader(ix: number): void {
