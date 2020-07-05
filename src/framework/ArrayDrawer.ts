@@ -76,6 +76,19 @@ export class ArrayDrawer { // TODO: each sorting tash should have an array drawe
         this.posCanvas.innerHTML = newInnerHTML;
     }
 
+    setReader(ix: number): void {
+        let height = this.READER_HEIGHT;
+        let width = this.cWidthUnit;
+        let xOffset: number = ix * width;
+
+        // bottom left, top mid, bottom right
+        this.readerCanvas.innerHTML = `<polygon points='
+        ${xOffset},${height}
+        ${xOffset + width / 2},0
+        ${xOffset + width},${height}
+        '></polygon>`;
+    }
+
     pushCounterUpdate(tArr: TrackableArray): void { // TODO: insteead of taking arguments, make two incrementors for the 2 vars that redir to setCounter, learn how to locate a div from within the canvas, then with that read its text conent, and asign it ot 1 + that number
         this.updateStack.push({
             type: UpdateType.COUNTER,
