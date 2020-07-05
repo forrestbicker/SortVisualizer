@@ -162,6 +162,11 @@ export class ArrayDrawer { // TODO: each sorting tash should have an array drawe
                     break;
 
                 case UpdateType.READER:
+                    this.setReader(update.index);
+                    break;
+
+                case UpdateType.COLOR:
+                    this.setColor(update.index, update.newColor);
                     break;
             }
         }
