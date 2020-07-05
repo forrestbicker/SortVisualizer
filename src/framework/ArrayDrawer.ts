@@ -107,6 +107,14 @@ export class ArrayDrawer { // TODO: each sorting tash should have an array drawe
         }
     };
 
+    pushReaderUpdate(ix: number, isAux: boolean): void {
+        if (!isAux) {
+            this.updateStack.push({
+                type: UpdateType.READER,
+                index: ix
+            })
+        }
+    }
     // startDisplayLoop(delay: number): void {
     //     this.stopDisplayLoop();
     //     this.intervalID = setInterval(this.displayNext, delay)
