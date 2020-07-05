@@ -21,7 +21,10 @@ export class TrackableArray { // todo: make extend Array<number>, MAYBE THATS NO
 
     get(ix: number): number {
         this.acsesses++;
+
         this.drawer.pushCounterUpdate(this);
+        this.drawer.pushReaderUpdate(ix, this.isAux)
+
         return this.arr[ix];
     }
 
