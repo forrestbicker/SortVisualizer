@@ -2,6 +2,7 @@ export const UpdateType = {
     COUNTER: 0,
     POSITION: 1,
     READER: 2,
+    COLOR: 3,
 }
 export class Util {
 
