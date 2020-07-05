@@ -121,6 +121,15 @@ export class ArrayDrawer { // TODO: each sorting tash should have an array drawe
             })
         }
     }
+
+    pushColorUpdate(ix: number, color: String): void {
+        this.updateStack.push({
+            type: UpdateType.COLOR,
+            index: ix,
+            newColor: color
+        })
+    }
+
     // startDisplayLoop(delay: number): void {
     //     this.stopDisplayLoop();
     //     this.intervalID = setInterval(this.displayNext, delay)
