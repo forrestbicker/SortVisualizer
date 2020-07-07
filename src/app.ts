@@ -4,6 +4,7 @@ import { MergeSort } from "./SortingAlgorithms/MergeSort";
 import { InsertionSort } from "./SortingAlgorithms/InsertionSort";
 import { HeapSort } from "./SortingAlgorithms/HeapSort";
 import { ArrayDrawer } from "./framework/ArrayDrawer";
+import { SelectionSort } from "./SortingAlgorithms/SelectionSort";
 
 var sorts: { [id: string]: any } = {
     mergeSort: function (sortingTask: SortingTask): MergeSort {
@@ -15,6 +16,9 @@ var sorts: { [id: string]: any } = {
     heapSort: function (sortingTask: SortingTask): HeapSort {
         return new HeapSort(sortingTask);
     },
+    selectionSort: function (sortingTask: SortingTask): SelectionSort {
+        return new SelectionSort(sortingTask);
+    }
 };
 
 let htmlString: string = "";
