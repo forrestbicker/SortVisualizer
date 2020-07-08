@@ -22,25 +22,48 @@ export class MergeSort extends ASorter {
 
     merge(start: number, mid: number, end: number): void {
 
+        // allocate memory to array coppies
+        let left: TrackableArray = this.task.generateNewAuxArr();
+        let right: TrackableArray = this.task.generateNewAuxArr();
 
-        let leftPointerIx: number = 0;
-        let rightPointerIx: number = 0;
-
-        let combined: number = this.task.generateNewAuxID();
-
-        while (leftPointerIx < leftArr.getLength() - 1 && rightPointerIx < rightArr.getLength()) {
-            let leftPointer: number = leftArr.get(leftPointerIx);
-            let rightPointer: number = leftArr.get(rightPointerIx);
-            if (leftPointer <= rightPointer) {
-                this.task.auxiliaryArrs[combined].push(leftPointer);
-                leftPointerIx++;
-            } else {
-                this.task.auxiliaryArrs[combined].push(rightPointer);
-                rightPointerIx++;
-            }
+        // populate coppies
+        for (var i: number = start; i <= mid; i++) {
+            left.push(this.task.tArr.get(i));
         }
 
-        return this.task.auxiliaryArrs[combined];
+        for (var i: number = mid + 1; i <= end; i++) {
+            right.push(this.task.tArr.get(i));
+        }
+
+        // crawlers
+        let l: number = 0; // left goes up to and including mid
+        let r: number = 0; // right is everything right of mid
+        let k: number = start; // insertion point to main array
+
+        while (l + start <= mid && r + mid + 1 <= end) {
+            let leftValue: number = left.get(l);
+            let rightValue: number = right.get(r);
+            if (leftValue <= rightValue) {
+                this.task.tArr.set(k, leftValue);
+                l++;
+            } else {
+                this.task.tArr.set(k, rightValue);
+                r++;
+            }
+            k++;
+        }
+
+        while (l + start <= mid) {
+            this.task.tArr.set(k, left.get(l));
+            l++;
+            k++;
+        }
+
+        while (r + mid + 1 <= end) {
+            this.task.tArr.set(k, right.get(r));
+            r++;
+            k++;
+        }
     }
 
 }
