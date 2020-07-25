@@ -4,6 +4,7 @@ import { Util } from "../Utility/Util";
 export class SortingTask {
     tArr: TrackableArray;
     auxiliaryArrs: Array<TrackableArray>;
+    // TODO: add constant space register storage with separate display
     drawer: ArrayDrawer;
 
     // swaps: number;

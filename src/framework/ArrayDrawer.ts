@@ -144,6 +144,7 @@ export class ArrayDrawer { // TODO: each sorting tash should have an array drawe
             switch (update.type) { // TODO: doing this as dicts works okay but would be better to do as some type of custom object
                 case UpdateType.COUNTER:
                     if (update.isAux) { // if is is an aux arr
+                        // this.setCounter(0, 0);
                     } else {
                         this.setCounter(update.acsesses, update.modifications);
                     }
