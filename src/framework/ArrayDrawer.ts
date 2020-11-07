@@ -88,11 +88,13 @@ export class ArrayDrawer { // TODO: each sorting tash should have an array drawe
         let xOffset: number = ix * width;
 
         // bottom left, top mid, bottom right
-        this.readerCanvas.innerHTML = `<polygon points='
-        ${xOffset},${height}
-        ${xOffset + width / 2},0
-        ${xOffset + width},${height}
-        '></polygon>`;
+        this.readerCanvas.innerHTML = `<polygon
+        points='
+            ${xOffset},${height}
+            ${xOffset + width / 2},0
+            ${xOffset + width},${height}'
+        style="fill: ${highlightColor!}"
+        ></polygon>`;
     }
 
     pushCounterUpdate(tArr: TrackableArray): void {
