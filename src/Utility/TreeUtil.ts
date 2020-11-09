@@ -6,15 +6,15 @@ export class TreeUtil {
         return arr.get(0);
     }
 
-    static getLeftChild(arr: TrackableArray, ix: number) {
-        return arr.get(ix / 2);
+    static getLeftChildIx(ix: number) {
+        return ix * 2;
     }
 
-    static getRightChild(arr: TrackableArray, ix: number) {
-        return arr.get(ix / 2 + 1);
+    static getRightChildIx(ix: number) {
+        return ix * 2 + 1;
     }
 
-    static getParrent(arr: TrackableArray, ix: number) {
-        return arr.get(2 * (ix - ix % 2));
+    static getParrentIx(ix: number) {
+        return Math.floor(ix / 2 - 1);
     }
 }
