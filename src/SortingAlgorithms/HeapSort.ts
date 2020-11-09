@@ -5,11 +5,18 @@ import { SortingTask } from "../framework/SortingTask"
 
 export class HeapSort extends ASorter {
     sort(): SortingTask {
+        let n: number = this.task.tArr.getLength()
+
+        for (let i = Math.floor(n / 2) - 1; i >= 0; i--) {
+            this.maxHeapify(i, n);
+        }
+
+        for (let i = n - 1; i > 0; i--) {
+            this.task.tArr.swap(0, i)
+            this.maxHeapify(0, i)
+        }
+
         return this.task;
-    }
-
-    convertToMaxHeap(): void {
-
     }
 
     maxHeapify(root: number, end: number): void {
