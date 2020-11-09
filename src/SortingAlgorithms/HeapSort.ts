@@ -12,10 +12,23 @@ export class HeapSort extends ASorter {
 
     }
 
-    maxHeapify(ix: number): void {
-        let left = TreeUtil.getLeftChild(this.task.tArr, ix);
-        let right = TreeUtil.getRightChild(this.task.tArr, ix);
+    maxHeapify(root: number, end: number): void {
+        let largest = root;
+        let left = TreeUtil.getLeftChildIx(root);
+        let right = TreeUtil.getRightChildIx(root);
 
+        // if left child exists and is greater than root
+        if (left < end && this.task.tArr.get(largest) < this.task.tArr.get(left)) {
+            largest = left;
+        }
 
+        if (right < end && this.task.tArr.get(largest) < this.task.tArr.get(right)) {
+            largest = right;
+        }
+
+        if (largest != root) {
+            this.task.tArr.swap(largest, root)
+            this.maxHeapify(largest, end);
+        }
     }
 }
