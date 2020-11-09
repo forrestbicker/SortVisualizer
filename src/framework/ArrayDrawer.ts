@@ -46,8 +46,8 @@ export class ArrayDrawer { // TODO: each sorting tash should have an array drawe
 
     setPrimaryArrayLength(length: number, max: number): void {
         this.currentLength = length;
-        this.cWidthUnit = 1.0 * this.canvasWidth / length; // assumes len = max - 1 (true if is consecuitive range of ints)
-        this.cHeightUnit = 1.0 * this.canvasHeight / max; // 
+        this.cWidthUnit = Math.floor(1.0 * this.canvasWidth / length); // assumes len = max - 1 (true if is consecuitive range of ints)
+        this.cHeightUnit = Math.floor(1.0 * this.canvasHeight / max); // 
     }
 
 
