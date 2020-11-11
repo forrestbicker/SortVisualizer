@@ -1,4 +1,5 @@
 import { ArrayDrawer } from "./ArrayDrawer";
+import { Config } from "../Utility/Config";
 
 export class TrackableArray { // todo: make extend Array<number>, MAYBE THATS NOT DESIRABLE because then u have easy acsess to methods that wll not incements counters when called  
 

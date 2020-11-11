@@ -1,4 +1,5 @@
 import { SortingTask } from "./SortingTask"
+import { Config } from "../Utility/Config";
 
 export abstract class ASorter {
     task: SortingTask;
