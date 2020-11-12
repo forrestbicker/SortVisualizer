@@ -20,6 +20,8 @@ export class ArrayDrawer { // TODO: each sorting tash should have an array drawe
 
     READER_HEIGHT: number = 15;
 
+    lastRead: number = 0;
+
 
     constructor(counterCanvas: HTMLElement, posCanvas: HTMLElement, readerCanvas: HTMLElement) {
         this.counterCanvas = counterCanvas;
@@ -82,7 +84,21 @@ export class ArrayDrawer { // TODO: each sorting tash should have an array drawe
         x.setAttribute("style", `fill:${color}`);
     }
 
-    setReader(ix: number): void {
+    setReader(ix: number, highlightColor?: string, permaBeacon?: boolean): void {
+        // default values for optional params
+        if (typeof highlightColor == "undefined") {
+            highlightColor = Config.colors.readerColor
+        }
+
+        if (typeof permaBeacon == "undefined") {
+            permaBeacon = false;
+        }
+
+        if (!permaBeacon) {
+            // clear last color modification
+            this.setColor(this.lastRead, Config.colors.barColor);
+        }
+
         let height = this.READER_HEIGHT;
         let width = this.cWidthUnit;
         let xOffset: number = ix * width;
@@ -95,6 +111,9 @@ export class ArrayDrawer { // TODO: each sorting tash should have an array drawe
             ${xOffset + width},${height}'
         style="fill: ${highlightColor!}"
         ></polygon>`;
+
+        this.setColor(ix, highlightColor!);
+        this.lastRead = ix;
     }
 
     pushCounterUpdate(tArr: TrackableArray): void {
