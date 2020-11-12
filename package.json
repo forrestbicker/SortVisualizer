@@ -4,7 +4,7 @@
   "description": "Interactive webpage simulation of sorting algorithms",
   "main": "index.js",
   "scripts": {
-    "build": "webpack -p",
+    "build": "webpack",
     "start": "webpack serve -d eval-cheap-source-map --content-base ./docs"
   },
   "repository": {
