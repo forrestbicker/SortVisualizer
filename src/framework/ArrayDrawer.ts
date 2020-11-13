@@ -134,13 +134,13 @@ export class ArrayDrawer { // TODO: each sorting tash should have an array drawe
         }
     };
 
-    pushReaderUpdate(ix: number, isAux: boolean): void {
-        if (!isAux) {
-            this.updateStack.push({
-                type: UpdateType.READER,
-                index: ix
-            })
-        }
+    pushReaderUpdate(ix: number, highlightColor?: string, permaBeacon?: boolean): void {
+        this.updateStack.push({
+            type: UpdateType.READER,
+            index: ix,
+            highlightColor: highlightColor,
+            permaBeacon: permaBeacon,
+        })
     }
 
     pushColorUpdate(ix: number, color: String): void {
@@ -176,7 +176,7 @@ export class ArrayDrawer { // TODO: each sorting tash should have an array drawe
                     break;
 
                 case UpdateType.READER:
-                    this.setReader(update.index);
+                    this.setReader(update.index, update.highlightColor, update.permaBeacon);
                     break;
 
                 case UpdateType.COLOR:
