@@ -55,7 +55,7 @@ export class ArrayDrawer { // TODO: each sorting tash should have an array drawe
 
     setCounter(acsesses: number, modifications: number): void {
         this.counterCanvas.innerHTML = `
-        <text x="20" y="35">
+        <text x="20" y="35" style="color:${Config.colors.textColor}">
         Acsesses     : ${acsesses}
         <br>
         Modifications: ${modifications}
