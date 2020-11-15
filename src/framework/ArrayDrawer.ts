@@ -73,7 +73,8 @@ export class ArrayDrawer { // TODO: each sorting tash should have an array drawe
                 width="${this.cWidthUnit}"
                 height="${height}"
                 x="${i * this.cWidthUnit}"
-                y="${canvasHeight - height}">
+                y="${canvasHeight - height}"
+                style="fill: ${Config.colors.barColor}">
                 </rect>`;
         }
         this.posCanvas.innerHTML = newInnerHTML;
