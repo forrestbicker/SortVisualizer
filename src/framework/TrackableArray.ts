@@ -57,14 +57,16 @@ export class TrackableArray { // todo: make extend Array<number>, MAYBE THATS NO
     }
 
     swap(a: number, b: number): void { // added layer of abstraction above normal functions
-        this.drawer.pushColorUpdate(a, "#FF0000")
-        this.drawer.pushColorUpdate(b, "#FF0000")
+        this.drawer.pushColorUpdate(a, Config.colors.barSwapHighlight)
+        this.drawer.pushColorUpdate(b, Config.colors.barSwapHighlight)
+
         let aVal = this.get(a);
         let bVal = this.get(b);
         this.set(a, bVal);
         this.set(b, aVal); // TODO: express tmp as an aux arr (or add a O(1) register) for const space tracking
-        this.drawer.pushColorUpdate(a, "#000000")
-        this.drawer.pushColorUpdate(b, "#000000")
+        
+        this.drawer.pushColorUpdate(a, Config.colors.barColor)
+        this.drawer.pushColorUpdate(b, Config.colors.barColor)
 
     }
 
