@@ -20,7 +20,6 @@ export abstract class ASorter {
 
     verify(): boolean {
         let prev: number = this.task.tArr.arr[0];
-        this.task.drawer.pushReaderUpdate(0, false)
         this.task.drawer.pushReaderUpdate(0, Config.colors.barCheckHighlight, true)
         for (var i = 1; i < this.task.tArr.getLength(); i++) {
             let val: number = this.task.tArr.arr[i];
