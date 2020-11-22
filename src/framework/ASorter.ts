@@ -1,4 +1,4 @@
-import { SortingTask } from "./SortingTask"
+import { SortingTask } from "./SortingTask";
 import { Config } from "../Utility/Config";
 
 export abstract class ASorter {
@@ -21,7 +21,7 @@ export abstract class ASorter {
     verify(): boolean {
         let prev: number = this.task.tArr.arr[0];
         this.task.drawer.pushReaderUpdate(0, false)
-        this.task.drawer.pushColorUpdate(0, "#00FF00")
+        this.task.drawer.pushReaderUpdate(0, Config.colors.barCheckHighlight, true)
         for (var i = 1; i < this.task.tArr.getLength(); i++) {
             let val: number = this.task.tArr.arr[i];
             this.task.drawer.pushReaderUpdate(i, false) // display effect of moving head without modifying counters
