@@ -23,12 +23,13 @@ export abstract class ASorter {
         this.task.drawer.pushReaderUpdate(0, Config.colors.barCheckHighlight, true)
         for (var i = 1; i < this.task.tArr.getLength(); i++) {
             let val: number = this.task.tArr.arr[i];
-            this.task.drawer.pushReaderUpdate(i, false) // display effect of moving head without modifying counters
-            if (prev < val) {
-                this.task.drawer.pushColorUpdate(i, "#00FF00")
+            if (prev <= val) {
+                this.task.drawer.pushReaderUpdate(i, Config.colors.barCheckHighlight, true) // display effect of moving head without modifying counters
             } else {
+                this.task.drawer.pushReaderUpdate(i, Config.colors.barErrorHighlight, true)
                 return false
             }
+            prev = val;
         }
         return true
     }
