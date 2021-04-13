@@ -28,6 +28,7 @@ export class TrackableArray {
         this.comparisons++;
         this.drawer.pushColorUpdate(a, Config.colors.barCompareHighlight);
         this.drawer.pushColorUpdate(b, Config.colors.barCompareHighlight);
+        this.drawer.pushCounterUpdate(this);
         this.drawer.pushBuffer();
 
         this.drawer.pushColorUpdate(a, Config.colors.barColor)
@@ -42,6 +43,7 @@ export class TrackableArray {
         this.swaps++;
         this.drawer.pushColorUpdate(a, Config.colors.barSwapHighlight);
         this.drawer.pushColorUpdate(b, Config.colors.barSwapHighlight);
+        this.drawer.pushCounterUpdate(this);
         this.drawer.pushBuffer();
 
         let aVal = this.arr[a];

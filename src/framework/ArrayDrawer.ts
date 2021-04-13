@@ -55,12 +55,12 @@ export class ArrayDrawer { // TODO: each sorting tash should have an array drawe
     }
 
 
-    setCounter(acsesses: number, modifications: number): void {
+    setCounter(swaps: number, comparisons: number): void {
         this.counterCanvas.innerHTML = `
         <text x="20" y="35" style="color:${Config.colors.textColor}">
-        Acsesses     : ${acsesses}
+        Swaps      : ${swaps}
         <br>
-        Modifications: ${modifications}
+        Comparisons: ${comparisons}
         </text>`
 
     }
@@ -122,9 +122,8 @@ export class ArrayDrawer { // TODO: each sorting tash should have an array drawe
     pushCounterUpdate(tArr: TrackableArray): void {
         this.updateStack.push({
             type: UpdateType.COUNTER,
-            isAux: tArr.isAux,
-            acsesses: tArr.acsesses,
-            modifications: tArr.modifications
+            swaps: tArr.swaps,
+            comparisons: tArr.comparisons
         });
     };
 
@@ -175,7 +174,7 @@ export class ArrayDrawer { // TODO: each sorting tash should have an array drawe
                     if (update.isAux) { // if is is an aux arr
                         // this.setCounter(0, 0);
                     } else {
-                        this.setCounter(update.acsesses, update.modifications);
+                        this.setCounter(update.swaps, update.comparisons);
                     }
                     this.displayNext();
                     break;
