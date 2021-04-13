@@ -18,6 +18,7 @@ export abstract class ASorter {
         this.task.drawer.display(15);
     }
 
+    /** independent checker to verify the sort has completed correctly */
     verify(): boolean {
         let prev: number = this.task.tArr.arr[0];
         this.task.drawer.pushReaderUpdate(0, Config.colors.barCheckHighlight, true)
@@ -25,8 +26,10 @@ export abstract class ASorter {
             let val: number = this.task.tArr.arr[i];
             if (prev <= val) {
                 this.task.drawer.pushReaderUpdate(i, Config.colors.barCheckHighlight, true) // display effect of moving head without modifying counters
+                this.task.drawer.pushBuffer();
             } else {
                 this.task.drawer.pushReaderUpdate(i, Config.colors.barErrorHighlight, true)
+                this.task.drawer.pushBuffer();
                 return false
             }
             prev = val;

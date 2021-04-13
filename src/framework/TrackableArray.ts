@@ -28,9 +28,11 @@ export class TrackableArray {
         this.comparisons++;
         this.drawer.pushColorUpdate(a, Config.colors.barCompareHighlight);
         this.drawer.pushColorUpdate(b, Config.colors.barCompareHighlight);
+        this.drawer.pushBuffer();
 
         this.drawer.pushColorUpdate(a, Config.colors.barColor)
         this.drawer.pushColorUpdate(b, Config.colors.barColor)
+        // no buffer here because we only want to change colors back when the next update comes along
 
         return this.arr[a] < this.arr[b];
     } // todo: make extend Array<number>, MAYBE THATS NOT DESIRABLE because then u have easy acsess to methods that wll not incements counters when called  
@@ -40,6 +42,7 @@ export class TrackableArray {
         this.swaps++;
         this.drawer.pushColorUpdate(a, Config.colors.barSwapHighlight);
         this.drawer.pushColorUpdate(b, Config.colors.barSwapHighlight);
+        this.drawer.pushBuffer();
 
         let aVal = this.arr[a];
         let bVal = this.arr[b];
@@ -49,6 +52,7 @@ export class TrackableArray {
         this.drawer.pushPositionUpdate(this);
         this.drawer.pushColorUpdate(a, Config.colors.barSwapHighlight);
         this.drawer.pushColorUpdate(b, Config.colors.barSwapHighlight);
+        this.drawer.pushBuffer();
 
         this.drawer.pushColorUpdate(a, Config.colors.barColor);
         this.drawer.pushColorUpdate(b, Config.colors.barColor);
