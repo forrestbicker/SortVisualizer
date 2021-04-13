@@ -1,6 +1,8 @@
 import { TrackableArray } from "./TrackableArray";
 import { Util, UpdateType } from "../Utility/Util";
 import { Config } from "../Utility/Config";
+
+/** visual update schedueler */
 export class ArrayDrawer { // TODO: each sorting tash should have an array drawer that is passed down and can tell aux from primary on method call
 
     counterCanvas: Element;
@@ -143,12 +145,17 @@ export class ArrayDrawer { // TODO: each sorting tash should have an array drawe
             permaBeacon: permaBeacon,
         })
     }
-
     pushColorUpdate(ix: number, color: String): void {
         this.updateStack.push({
             type: UpdateType.COLOR,
             index: ix,
             newColor: color
+        })
+    }
+
+    pushBuffer(): void {
+        this.updateStack.push({
+            type: UpdateType.BUFFER,
         })
     }
 
@@ -163,25 +170,28 @@ export class ArrayDrawer { // TODO: each sorting tash should have an array drawe
     displayNext(): void {
         let update = this.updateStack.shift(); // FIFO queue
         if (update != undefined) {
-            switch (update.type) { // TODO: doing this as dicts works okay but would be better to do as some type of custom object
-                case UpdateType.COUNTER:
+            switch (update.type) { // TODO: doing this as dicts is hacky but would be better to do as some type of custom object UpdateClass with several subclasses for each type of update
+                case UpdateType.COUNTER: // update counter values
                     if (update.isAux) { // if is is an aux arr
                         // this.setCounter(0, 0);
                     } else {
                         this.setCounter(update.acsesses, update.modifications);
                     }
+                    this.displayNext();
                     break;
-
-                case UpdateType.POSITION:
+                case UpdateType.POSITION: // update physical array
                     this.setPositions(update.arr);
+                    this.displayNext();
                     break;
-
-                case UpdateType.READER:
+                case UpdateType.READER: // update location of reader head
                     this.setReader(update.index, update.highlightColor, update.permaBeacon);
+                    this.displayNext();
                     break;
-
-                case UpdateType.COLOR:
+                case UpdateType.COLOR: // change color of bars
                     this.setColor(update.index, update.newColor);
+                    this.displayNext();
+                    break;
+                case UpdateType.BUFFER:
                     break;
             }
         }

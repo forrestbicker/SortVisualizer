@@ -3,6 +3,7 @@ export const UpdateType = {
     POSITION: 1,
     READER: 2,
     COLOR: 3,
+    BUFFER: 4,
 }
 export class Util {
 
