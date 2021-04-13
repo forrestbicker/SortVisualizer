@@ -1,11 +1,13 @@
 import { ArrayDrawer } from "./ArrayDrawer";
 import { Config } from "../Utility/Config";
 
-export class TrackableArray { // todo: make extend Array<number>, MAYBE THATS NOT DESIRABLE because then u have easy acsess to methods that wll not incements counters when called  
+export class TrackableArray {
 
     arr: Array<number>;
     acsesses: number;
     modifications: number;
+    comparisons: number;
+    swaps: number;
     drawer: ArrayDrawer;
     isAux: boolean; // aux arrs are NOT drawable, primary arrs are, only one drawable arr should be active at a time
 
@@ -13,13 +15,46 @@ export class TrackableArray { // todo: make extend Array<number>, MAYBE THATS NO
         this.arr = array;
         this.acsesses = 0;
         this.modifications = 0;
-
+        this.comparisons = 0;
+        this.swaps = 0;
 
         this.isAux = isAux;
 
         this.drawer = drawer;
     }
 
+    /** returns a < b for values at indecies a and b */
+    public compare(a: number, b: number) {
+        this.comparisons++;
+        this.drawer.pushColorUpdate(a, Config.colors.barCompareHighlight);
+        this.drawer.pushColorUpdate(b, Config.colors.barCompareHighlight);
+
+        this.drawer.pushColorUpdate(a, Config.colors.barColor)
+        this.drawer.pushColorUpdate(b, Config.colors.barColor)
+
+        return this.arr[a] < this.arr[b];
+    } // todo: make extend Array<number>, MAYBE THATS NOT DESIRABLE because then u have easy acsess to methods that wll not incements counters when called  
+
+    /** swaps values at indecies a and b */
+    public swap(a: number, b: number): void { // added layer of abstraction above normal functions
+        this.swaps++;
+        this.drawer.pushColorUpdate(a, Config.colors.barSwapHighlight);
+        this.drawer.pushColorUpdate(b, Config.colors.barSwapHighlight);
+
+        let aVal = this.arr[a];
+        let bVal = this.arr[b];
+        this.arr[a] = bVal;
+        this.arr[b] = aVal;
+
+        this.drawer.pushPositionUpdate(this);
+        this.drawer.pushColorUpdate(a, Config.colors.barSwapHighlight);
+        this.drawer.pushColorUpdate(b, Config.colors.barSwapHighlight);
+
+        this.drawer.pushColorUpdate(a, Config.colors.barColor);
+        this.drawer.pushColorUpdate(b, Config.colors.barColor);
+    }
+
+    // returns a value at a given index and updates reader and stats
     get(ix: number): number {
         this.acsesses++;
 
@@ -31,6 +66,7 @@ export class TrackableArray { // todo: make extend Array<number>, MAYBE THATS NO
         return this.arr[ix];
     }
 
+    // sets a value at a given index to annother value, updates reader and stats
     set(ix: number, value: number): void {
         this.arr[ix] = value;
 
@@ -56,20 +92,6 @@ export class TrackableArray { // todo: make extend Array<number>, MAYBE THATS NO
 
         this.modifications++;
         this.drawer.pushPositionUpdate(this);
-    }
-
-    swap(a: number, b: number): void { // added layer of abstraction above normal functions
-        this.drawer.pushColorUpdate(a, Config.colors.barSwapHighlight)
-        this.drawer.pushColorUpdate(b, Config.colors.barSwapHighlight)
-
-        let aVal = this.get(a);
-        let bVal = this.get(b);
-        this.set(a, bVal);
-        this.set(b, aVal); // TODO: express tmp as an aux arr (or add a O(1) register) for const space tracking
-        
-        this.drawer.pushColorUpdate(a, Config.colors.barColor)
-        this.drawer.pushColorUpdate(b, Config.colors.barColor)
-
     }
 
     getLength(): number {
