@@ -68,7 +68,6 @@ export class TrackableArray {
         if (!this.isAux) {
             this.drawer.pushReaderUpdate(ix)
         }
-
         return this.arr[ix];
     }
 
@@ -109,6 +108,7 @@ export class TrackableArray {
         this.drawer.setPositions(this.arr);
     }
 
+    // for debuging purposes
     toString(): String {
         let out: String = "[";
         out += String(this.arr[0]);

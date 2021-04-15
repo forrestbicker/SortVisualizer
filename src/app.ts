@@ -39,7 +39,7 @@ function runSort(): void {
     for (var i = 1; i <= 32; i++) {
         arr.push(i);
     }
-    
+
     // build drawer
     let drawer = new ArrayDrawer(
         document.getElementById("counter")!,

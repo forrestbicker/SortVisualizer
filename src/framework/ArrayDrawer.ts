@@ -56,7 +56,6 @@ export class ArrayDrawer { // TODO: each sorting tash should have an array drawe
         this.cHeightUnit = Math.floor(1.0 * this.canvasHeight / max); // 
     }
 
-
     setCounter(swaps: number, comparisons: number): void {
         this.counterCanvas.innerHTML = `
         <text x="20" y="35" style="color:${Config.colors.textColor}">
@@ -64,7 +63,6 @@ export class ArrayDrawer { // TODO: each sorting tash should have an array drawe
         <br>
         Comparisons: ${comparisons}
         </text>`
-
     }
 
     setPositions(arr: number[]): void { // todo: fix all array<number> to number<> and the likes
@@ -146,6 +144,7 @@ export class ArrayDrawer { // TODO: each sorting tash should have an array drawe
             permaBeacon: permaBeacon,
         })
     }
+
     pushColorUpdate(ix: number, color: String): void {
         this.updateStack.push({
             type: UpdateType.COLOR,

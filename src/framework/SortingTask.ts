@@ -16,8 +16,6 @@ export class SortingTask {
 
         this.tArr = new TrackableArray(array, this.drawer, false);
         this.auxiliaryArrs = new Array<TrackableArray>();
-        // this.comparisons = 0;
-
     }
 
     generateNewAuxArr(): TrackableArray {
@@ -25,8 +23,9 @@ export class SortingTask {
         return this.auxiliaryArrs[this.auxiliaryArrs.length - 1];
     }
 
-    getData(): any { };
+    // getData(): any { };
 
+    /** sets array to randomized order */
     randomize(): void {
         let cutoff: number = 0;
 
