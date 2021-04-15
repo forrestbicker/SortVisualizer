@@ -45,6 +45,7 @@ function runSort(): void {
         document.getElementById("counter")!,
         document.getElementById("position")!,
         document.getElementById("reader")!,
+        (document.getElementById("delaySlider")! as HTMLInputElement),
     );
 
     let selectedSort: string = dropdown.value;

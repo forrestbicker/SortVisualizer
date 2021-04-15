@@ -8,6 +8,7 @@ export class ArrayDrawer { // TODO: each sorting tash should have an array drawe
     counterCanvas: Element;
     posCanvas: Element;
     readerCanvas: Element;
+    delaySlider: HTMLInputElement;
 
     currentLength: number = 0;
     currentMax: number = 0;
@@ -25,10 +26,11 @@ export class ArrayDrawer { // TODO: each sorting tash should have an array drawe
     lastRead: number = 0;
 
 
-    constructor(counterCanvas: HTMLElement, posCanvas: HTMLElement, readerCanvas: HTMLElement) {
+    constructor(counterCanvas: HTMLElement, posCanvas: HTMLElement, readerCanvas: HTMLElement, delaySlider: HTMLInputElement) {
         this.counterCanvas = counterCanvas;
         this.posCanvas = posCanvas;
         this.readerCanvas = readerCanvas;
+        this.delaySlider = delaySlider;
 
         this.updateStack = [];
 
@@ -159,11 +161,9 @@ export class ArrayDrawer { // TODO: each sorting tash should have an array drawe
     }
 
 
-    display(delay: number): void {
+    display(): void {
         let len: number = this.updateStack.length;
-        for (var i = 0; i < len; i++) {
-            setTimeout(() => { this.displayNext() }, i * delay);
-        }
+        this.displayNext();
     }
 
     displayNext(): void {
@@ -191,7 +191,7 @@ export class ArrayDrawer { // TODO: each sorting tash should have an array drawe
                     this.displayNext();
                     break;
                 case UpdateType.BUFFER:
-                    break;
+                    setTimeout(() => { this.displayNext() }, 256 - parseFloat(this.delaySlider.value));
             }
         }
     }
