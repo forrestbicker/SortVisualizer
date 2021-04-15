@@ -4,6 +4,15 @@ import { SortingTask } from "../framework/SortingTask"
 import { Util } from "../Utility/Util";
 
 export class MergeSort extends ASorter {
+    constructor(sortingTask: SortingTask) {
+        super(sortingTask);
+        this.swapComplexity = "nlogn";
+        this.comparisonComplexity = "nlogn";
+        // TODO: add space complexity
+        // in place
+        this.description = "Merge sort is a divide and conquer algorithm that will sort small sub-sections of an array and progressivley merge said sub-sections to yield larger and larger sorted sub-sections until the entire array is sorted.";
+    }
+
     sort(): SortingTask {
         this.mergeSort(0, this.task.tArr.getLength() - 1);
         return this.task;

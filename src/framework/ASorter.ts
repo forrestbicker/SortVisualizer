@@ -3,9 +3,15 @@ import { Config } from "../Utility/Config";
 
 export abstract class ASorter {
     task: SortingTask;
+    swapComplexity: string;
+    comparisonComplexity: string;
+    description: string;
 
     constructor(sortingTask: SortingTask) {
         this.task = sortingTask;
+        this.swapComplexity = "";
+        this.comparisonComplexity = "";
+        this.description = "";
     }
 
     abstract sort(): SortingTask;

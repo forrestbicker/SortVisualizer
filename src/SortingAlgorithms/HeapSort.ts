@@ -4,6 +4,15 @@ import { TrackableArray } from "../framework/TrackableArray";
 import { SortingTask } from "../framework/SortingTask"
 
 export class HeapSort extends ASorter {
+    constructor(sortingTask: SortingTask) {
+        super(sortingTask);
+        this.swapComplexity = "nlogn";
+        this.comparisonComplexity = "nlogn";
+        // TODO: add space complexity
+        // in place
+        this.description = "Heap sort is will visualize the unsorted elements of an array as a heap data structure from which it is possible to find the next value of interest in O(1) time. Once the value is found, it is moved into sorted position and the heap is reorganized in O(logn) time to preserve heap structure. This process is repeated until the array is sorted"; // basically insertion sort but better lol
+    }
+
     sort(): SortingTask {
         let n: number = this.task.tArr.getLength()
 
