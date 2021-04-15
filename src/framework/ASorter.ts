@@ -21,8 +21,10 @@ export abstract class ASorter {
         this.task.tArr.display()
         this.sort();
         this.verify();
-        this.task.drawer.display(15);
+        this.task.drawer.display();
     }
+
+
 
     /** independent checker to verify the sort has completed correctly */
     verify(): boolean {
