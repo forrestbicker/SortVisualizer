@@ -13,15 +13,20 @@ export class InsertionSort extends ASorter {
 
     sort(): SortingTask {
         for (var i = 1; i < this.task.tArr.getLength(); i++) {
-            let key = this.task.tArr.get(i);
-            let j = i - 1;
-            while (j >= 0 && key < this.task.tArr.get(j)) {
-                this.task.tArr.set(j + 1, this.task.tArr.get(j));
+            // at the start of the loop, arr is sorted up to ix i (exclusive)
+            let j = i - 1; 
+            // we find where to insert i so the arr is sorted up to ix i (inclusive)
+            while (j >= 0 && this.task.tArr.compare(i, j)) {
                 j--;
             }
-            this.task.tArr.set(j + 1, key);
+            j++;
+            // once i's sorted location is found, we need to swap elements back up to shift the array over
+            while (j < i) {
+                this.task.tArr.swap(j, i);
+                j++;
+            }
         }
         return this.task;
     }
-    
+
 }

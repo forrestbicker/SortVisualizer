@@ -34,11 +34,11 @@ export class HeapSort extends ASorter {
         let right = TreeUtil.getRightChildIx(root);
 
         // if left child exists and is greater than root
-        if (left < end && this.task.tArr.get(largest) < this.task.tArr.get(left)) {
+        if (left < end && this.task.tArr.compare(largest, left)) {
             largest = left;
         }
 
-        if (right < end && this.task.tArr.get(largest) < this.task.tArr.get(right)) {
+        if (right < end && this.task.tArr.compare(largest, right)) {
             largest = right;
         }
 
