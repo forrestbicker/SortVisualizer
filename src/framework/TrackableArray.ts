@@ -30,6 +30,7 @@ export class TrackableArray {
         this.drawer.pushColorUpdate(b, Config.colors.barCompareHighlight);
         this.drawer.pushCounterUpdate(this);
         this.drawer.pushBuffer();
+        this.drawer.pushBuffer();
 
         this.drawer.pushColorUpdate(a, Config.colors.barColor)
         this.drawer.pushColorUpdate(b, Config.colors.barColor)
@@ -68,6 +69,7 @@ export class TrackableArray {
         if (!this.isAux) {
             this.drawer.pushReaderUpdate(ix)
         }
+        this.drawer.pushBuffer();
         return this.arr[ix];
     }
 
@@ -78,6 +80,8 @@ export class TrackableArray {
         this.modifications++;
         this.drawer.pushCounterUpdate(this);
         this.drawer.pushPositionUpdate(this);
+        this.drawer.pushColorUpdate(ix, Config.colors.writerColor);
+        this.drawer.pushBuffer();
     }
 
     push(value: number): void {
