@@ -5,6 +5,7 @@ import { InsertionSort } from "./SortingAlgorithms/InsertionSort";
 import { HeapSort } from "./SortingAlgorithms/HeapSort";
 import { ArrayDrawer } from "./framework/ArrayDrawer";
 import { SelectionSort } from "./SortingAlgorithms/SelectionSort";
+import { Config } from "./Utility/Config";
 
 var sorts: { [id: string]: any } = {
     mergeSort: function (sortingTask: SortingTask): MergeSort {
@@ -53,6 +54,12 @@ function runSort(): void {
     s.execute();
 }
 
+function initalize(counterCanvas: HTMLElement, posCanvas: HTMLElement, readerCanvas: HTMLElement) {
+    posCanvas.setAttribute("width", `${100 * Config.canvasWidthPercent}vw`);
+    posCanvas.setAttribute("height", `${100 * Config.canvasHeightPercent}vh`);
+    counterCanvas.setAttribute("width", `${100 * Config.canvasWidthPercent}vw`);
+    readerCanvas.setAttribute("width", `${100 * Config.canvasWidthPercent}vw`);
+}
 // // docum
 // //
 // // document!.getElementById('root')!.textContent = "hello"

@@ -13,9 +13,6 @@ export class ArrayDrawer { // TODO: each sorting tash should have an array drawe
     currentLength: number = 0;
     currentMax: number = 0;
 
-    canvasWidth: number = 0;
-    canvasHeight: number = 0;
-
     cWidthUnit: number = 0;
     cHeightUnit: number = 0;
 
@@ -34,26 +31,16 @@ export class ArrayDrawer { // TODO: each sorting tash should have an array drawe
 
         this.updateStack = [];
 
-        this.resizeCanvas(500, 500);
-    }
+        let w: number = Math.floor(Config.canvasWidthPercent * document.documentElement.clientWidth);
+        let h: number = Math.floor(Config.canvasHeightPercent * document.documentElement.clientHeight);
 
-    resizeCanvas(width: number, height: number): void {
-        this.canvasWidth = width;
-        this.canvasHeight = height;
-
-        this.posCanvas.setAttribute("width", String(this.canvasWidth));
-        this.posCanvas.setAttribute("height", String(this.canvasHeight));
-        this.counterCanvas.setAttribute("width", String(this.canvasWidth));
-        this.readerCanvas.setAttribute("width", String(this.canvasWidth));
-        this.readerCanvas.setAttribute("height", String(this.READER_HEIGHT));
-
-        this.setPrimaryArrayLength(this.currentLength, this.currentMax);
+        readerCanvas.setAttribute("height", String(this.READER_HEIGHT));
     }
 
     setPrimaryArrayLength(length: number, max: number): void {
         this.currentLength = length;
-        this.cWidthUnit = Math.floor(1.0 * this.canvasWidth / length); // assumes len = max - 1 (true if is consecuitive range of ints)
-        this.cHeightUnit = Math.floor(1.0 * this.canvasHeight / max); // 
+        this.cWidthUnit = (100 * Config.canvasWidthPercent / length); // assumes len = max - 1 (true if is consecuitive range of ints)
+        this.cHeightUnit = (100 * Config.canvasHeightPercent / max); //
     }
 
     setCounter(swaps: number, comparisons: number): void {
@@ -67,17 +54,26 @@ export class ArrayDrawer { // TODO: each sorting tash should have an array drawe
 
     setPositions(arr: number[]): void { // todo: fix all array<number> to number<> and the likes
         let newInnerHTML: string = ""
-        let canvasHeight: number = Number(this.posCanvas.getAttribute("height"));
         for (var i = 0; i < arr.length; i++) {
             let height: number = arr[i] * this.cHeightUnit;
+            // newInnerHTML += `
+            //     <rect
+            //     width="${this.cWidthUnit}"
+            //     height="${height}"
+            //     x="${i * this.cWidthUnit}"
+            //     y="${canvasHeight - height}"
+            //     style="fill: ${Config.colors.barColor}">
+            //     </rect>`;
             newInnerHTML += `
                 <rect
-                width="${this.cWidthUnit}"
-                height="${height}"
-                x="${i * this.cWidthUnit}"
-                y="${canvasHeight - height}"
+                width="${this.cWidthUnit}vw"
+                height="${height}vh"
+                x="${i * this.cWidthUnit * (15/16)}vw"
+                y="${100 * Config.canvasHeightPercent - height}vh"
                 style="fill: ${Config.colors.barColor}">
-                </rect>`;
+                </rect>
+            `; // would be nice to figure out how to get styling working by CSS classes such as rect.default, rect.comparing, rect.swaping but need to figure out how to dynamically change colors that way
+
         }
         this.posCanvas.innerHTML = newInnerHTML;
     }
