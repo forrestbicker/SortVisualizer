@@ -7,3 +7,49 @@
     margin-right: auto;
     display: block;
 }
+
+:root {
+    /* colors, will be initialized in js on runtime */
+    --textColor: ;
+    --barDefaultColor: ;
+    --barSwapColor: ;
+    --barCompareColor: ;
+    --barSetColor: ;
+    --barGetColor: ;
+    --barCorrectColor: ;
+    --barIncorrectColor: ;
+    /* bar dynamically resizing widths */
+    --widthUnit: 10px;
+    --heightUnit: 10px;
+}
+rect {
+    width: var(--widthUnit);
+}
+
+rect.default {
+    fill: var(--barDefaultColor);
+}
+
+rect.swap {
+    fill: var(--barSwapColor);
+}
+
+rect.compare {
+    fill: var(--barCompareColor);
+}
+
+rect.get {
+    fill: var(--barSwapColor);
+}
+
+rect.set {
+    fill: var(--barCompareColor);
+}
+
+rect.correct {
+    fill: var(--barCorrectColor);
+}
+
+rect.incorrect {
+    fill: var(--barIncorrectColor);
+}
