@@ -26,14 +26,14 @@ export class TrackableArray {
     /** returns a < b for values at indecies a and b */
     public compare(a: number, b: number) {
         this.comparisons++;
-        this.drawer.pushColorUpdate(a, Config.colors.barCompareHighlight);
-        this.drawer.pushColorUpdate(b, Config.colors.barCompareHighlight);
+        this.drawer.pushClassUpdate(a, 'compare');
+        this.drawer.pushClassUpdate(b, 'compare');
         this.drawer.pushCounterUpdate(this);
         this.drawer.pushBuffer();
         this.drawer.pushBuffer();
 
-        this.drawer.pushColorUpdate(a, Config.colors.barColor)
-        this.drawer.pushColorUpdate(b, Config.colors.barColor)
+        this.drawer.pushClassUpdate(a, 'default');
+        this.drawer.pushClassUpdate(b, 'default');
         // no buffer here because we only want to change colors back when the next update comes along
 
         return this.arr[a] < this.arr[b];
@@ -42,8 +42,8 @@ export class TrackableArray {
     /** swaps values at indecies a and b */
     public swap(a: number, b: number): void { // added layer of abstraction above normal functions
         this.swaps++;
-        this.drawer.pushColorUpdate(a, Config.colors.barSwapHighlight);
-        this.drawer.pushColorUpdate(b, Config.colors.barSwapHighlight);
+        this.drawer.pushClassUpdate(a, 'swap');
+        this.drawer.pushClassUpdate(b, 'swap');
         this.drawer.pushCounterUpdate(this);
         this.drawer.pushBuffer();
 
@@ -53,23 +53,23 @@ export class TrackableArray {
         this.arr[b] = aVal;
 
         this.drawer.pushPositionUpdate(this);
-        this.drawer.pushColorUpdate(a, Config.colors.barSwapHighlight);
-        this.drawer.pushColorUpdate(b, Config.colors.barSwapHighlight);
+        this.drawer.pushClassUpdate(a, 'swap');
+        this.drawer.pushClassUpdate(b, 'swap');
         this.drawer.pushBuffer();
 
-        this.drawer.pushColorUpdate(a, Config.colors.barColor);
-        this.drawer.pushColorUpdate(b, Config.colors.barColor);
+        this.drawer.pushClassUpdate(a, 'default');
+        this.drawer.pushClassUpdate(b, 'default');
     }
 
     // returns a value at a given index and updates reader and stats
-    get(ix: number): number {
         this.acsesses++;
 
         this.drawer.pushCounterUpdate(this);
         if (!this.isAux) {
             this.drawer.pushReaderUpdate(ix)
+            this.drawer.pushClassUpdate(ix, 'get')
+            this.drawer.pushBuffer();
         }
-        this.drawer.pushBuffer();
         return this.arr[ix];
     }
 
@@ -79,9 +79,14 @@ export class TrackableArray {
 
         this.modifications++;
         this.drawer.pushCounterUpdate(this);
-        this.drawer.pushPositionUpdate(this);
-        this.drawer.pushColorUpdate(ix, Config.colors.writerColor);
-        this.drawer.pushBuffer();
+
+        if (!this.isAux) {
+            this.drawer.pushPositionUpdate(this);
+            this.drawer.pushReaderUpdate(ix)
+            this.drawer.pushClassUpdate(ix, 'set');
+            this.drawer.pushBuffer();
+            this.drawer.pushClassUpdate(ix, 'default');
+        }
     }
 
     push(value: number): void {
