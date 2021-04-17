@@ -4,6 +4,7 @@ export const UpdateType = {
     READER: 2,
     COLOR: 3,
     BUFFER: 4,
+    CLASS: 5,
 }
 export class Util {
 

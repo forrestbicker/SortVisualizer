@@ -97,6 +97,10 @@ export class ArrayDrawer { // TODO: each sorting tash should have an array drawe
             // clear last color modification
             this.setColor(this.lastRead, Config.colors.barColor);
         }
+    setClass(ix: number, className: string): void {
+        let x = this.posCanvas.children[ix];
+        x.setAttribute("class", className);
+    }
 
         let height = this.READER_HEIGHT;
         let width = this.cWidthUnit;
@@ -149,6 +153,14 @@ export class ArrayDrawer { // TODO: each sorting tash should have an array drawe
         })
     }
 
+    pushClassUpdate(ix: number, className: string): void {
+        this.updateStack.push({
+            type: UpdateType.CLASS,
+            index: ix,
+            newClassName: className
+        })
+    }
+
     pushBuffer(): void {
         this.updateStack.push({
             type: UpdateType.BUFFER,
@@ -183,6 +195,10 @@ export class ArrayDrawer { // TODO: each sorting tash should have an array drawe
                     break;
                 case UpdateType.COLOR: // change color of bars
                     this.setColor(update.index, update.newColor);
+                    this.displayNext();
+                    break;
+                case UpdateType.CLASS:
+                    this.setClass(update.index, update.newClassName);
                     this.displayNext();
                     break;
                 case UpdateType.BUFFER:
