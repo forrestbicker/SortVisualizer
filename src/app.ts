@@ -31,6 +31,7 @@ let dropdown: HTMLSelectElement = document.getElementById(
     "algoSelect"
 )! as HTMLSelectElement;
 dropdown.innerHTML = htmlString;
+    Config.init();
 
 document.getElementById("startButton")!.addEventListener("click", runSort);
 

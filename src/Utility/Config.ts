@@ -2,11 +2,13 @@ export class Config {
     static white: string = "#E2E8F0";
 
     static colors: any = {
-        barColor: Config.white, // default color for array element repersentations
-        barSwapHighlight: "#37D7FF", // hightlight color durring element swaps
-        barCompareHighlight: "#D787FF", // hightlight color durring element swaps
-        barCheckHighlight: "#9AE6B4", // highlight color for correctly placed element in checking
-        barErrorHighlight: "#FEB2B2", // highlight color for incorrectly placed element in checking
+        barDefaultColor: Config.white, // default color for array element repersentations
+        barSwapColor: "#37D7FF", // color durring element swaps
+        barCompareColor: "#D787FF", // color durring element swaps
+        barSetColor: "#37D7FF", // color durring element value retreival
+        barGetColor: "#D787FF", // color durring element value modification
+        barCorrectColor: "#9AE6B4", // color for correctly placed element in validation
+        barIncorrecColor: "#FEB2B2", // color for incorrectly placed element in validation
 
         writerColor: "#90cdf4",
         readerColor: "#FFA5FF",
@@ -16,4 +18,14 @@ export class Config {
 
     static canvasWidthPercent = 0.6;
     static canvasHeightPercent = 0.6;
-}
+}    static init() {
+        document.documentElement.style.setProperty('--textColor', Config.colors.textColor);
+        document.documentElement.style.setProperty('--barDefaultColor', Config.colors.barDefaultColor);
+        document.documentElement.style.setProperty('--barSwapColor', Config.colors.barSwapColor);
+        document.documentElement.style.setProperty('--barCompareColor', Config.colors.barCompareColor);
+        document.documentElement.style.setProperty('--barSetColor', Config.colors.barSwapColor);
+        document.documentElement.style.setProperty('--barGetColor', Config.colors.barCompareColor);
+        document.documentElement.style.setProperty('--barCorrectColor', Config.colors.barCorrectColor);
+        document.documentElement.style.setProperty('--barIncorrecColor', Config.colors.barIncorrecColor);
+    }
+} 
