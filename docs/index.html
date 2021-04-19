@@ -17,12 +17,23 @@
             <svg id="reader"></svg>
         </div>
     </div>
+    <div id="legend">
+        <p><u>Swaps</u> are displayed in blue</p>
+        <svg id="swapLegend" style="height: calc(5 * var(--heightUnit))">
+            <rect style="height: calc(2 * var(--heightUnit)); x: 0px; y: calc(2 * var(--heightUnit));" class="swap"></rect>
+            <rect style="height: calc(4 * var(--heightUnit)); x: calc(3 * var(--widthUnit) / 2); y: calc(0);" class="swap"></rect>
+        </svg>
+        <br>
+        <p><u>Comparisons</u> are displayed in purple</p>
+        <svg id="compareLegend" style="height: calc(5 * var(--heightUnit))">
+            <!-- two bars to compare -->
+            <rect style="height: calc(2 * var(--heightUnit)); x: 0px; y: calc(2 * var(--heightUnit));" class="compare"></rect>
+            <rect style="height: calc(4 * var(--heightUnit)); x: calc(3 * var(--widthUnit)); y: 0px;" class="compare"></rect>
 
-    <select id="algoSelect">
-    </select>
-    <button id="startButton">Start!</button>
-    <div class="slidecontainer">
-        <input id="delaySlider" type="range" min="1" max="256" value="128" class="slider">
+            <!-- a less than symbol -->
+            <rect style="width: calc(var(--widthUnit) / 8); height: calc(0.75 * var(--widthUnit)); x: calc(2 * var(--widthUnit)); y: calc(2 * var(--heightUnit) - (0.75 * var(--widthUnit) / 1.41) + (var(--widthUnit) / 8 / 2 / 1.41)); transform: rotate(45deg);" class="default rotatable"></rect>
+            <rect style="width: calc(var(--widthUnit) / 8); height: calc(0.75 * var(--widthUnit)); x: calc(2 * var(--widthUnit)); y: calc(2 * var(--heightUnit)); transform: rotate(-45deg);" class="default rotatable"></rect>
+        </svg>
     </div>
     <div id='root'></div>
 

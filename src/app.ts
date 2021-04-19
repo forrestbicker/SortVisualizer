@@ -34,6 +34,9 @@ dropdown.innerHTML = htmlString;
     Config.init();
 
 document.getElementById("startButton")!.addEventListener("click", runSort);
+    // start swap legend
+    swapLegend = document.getElementById("swapLegend")!;
+    swapA();
 
 function runSort(): void {
     // create arr
@@ -77,3 +80,16 @@ function initalize(counterCanvas: HTMLElement, posCanvas: HTMLElement, readerCan
 // //         return sortingTask;
 // //     },
 // // };
+
+
+function swapA() {
+    swapLegend.innerHTML = `<rect style="height: calc(2 * var(--heightUnit)); x: 0px; y: calc(2 * var(--heightUnit));" class="swap"></rect>
+    <rect style="height: calc(4 * var(--heightUnit)); x: calc(1.5 * var(--widthUnit)); y: calc(0);" class="swap"></rect>`;
+    setTimeout(swapB, 1000);
+}
+
+function swapB() {
+    swapLegend.innerHTML = `<rect style="height: calc(2 * var(--heightUnit)); x: calc(1.5 * var(--widthUnit)); y: calc(2 * var(--heightUnit));" class="swap"></rect>
+    <rect style="height: calc(4 * var(--heightUnit)); x: 0px; y: calc(0);" class="swap"></rect>`;
+    setTimeout(swapA, 1000);
+}

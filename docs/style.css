@@ -67,3 +67,8 @@ rect.correct {
 rect.incorrect {
     fill: var(--barIncorrectColor);
 }
+
+rect.rotatable {
+    transform-box: fill-box;
+    transform-origin: center;
+}
