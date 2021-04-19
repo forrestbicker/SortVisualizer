@@ -8,13 +8,26 @@
 </head>
 
 <body style="background-color: #171923">
-
-    <div class="centered">
-        <div id="canvas" style="width:60vw">
+    <h1>Sorting Visualizer</h1>
+    <div class="centered-outer">
+        <div id="canvas" class="centered-inner">
             <div id="counter"></div>
             <svg id="position"></svg>
             <br>
             <svg id="reader"></svg>
+        </div>
+    </div>
+    <div class="centered-outer">
+        <div class="centered-inner">
+            <select id="algoSelect">
+            </select>
+            <button id="startButton">Start!</button>
+            <button id="randomizeButton">Randomize!</button>
+            <button id="reverseButton">Reverse!</button>
+            <p>Speed</p>
+            <div class="slidecontainer">
+                <input id="delaySlider" type="range" min="1" max="256" value="128" class="slider">
+            </div>
         </div>
     </div>
     <div id="legend">
