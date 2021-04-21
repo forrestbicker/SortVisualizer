@@ -62,6 +62,7 @@ export class TrackableArray {
     }
 
     // returns a value at a given index and updates reader and stats
+    public get(ix: number): number {
         this.acsesses++;
 
         this.drawer.pushCounterUpdate(this);
@@ -74,7 +75,7 @@ export class TrackableArray {
     }
 
     // sets a value at a given index to annother value, updates reader and stats
-    set(ix: number, value: number): void {
+    public set(ix: number, value: number): void {
         this.arr[ix] = value;
 
         this.modifications++;
@@ -89,7 +90,8 @@ export class TrackableArray {
         }
     }
 
-    push(value: number): void {
+    /** push value into the end of the arr */
+    public push(value: number): void {
         this.arr.push(value);
 
         this.modifications++;
@@ -97,28 +99,25 @@ export class TrackableArray {
         this.drawer.pushPositionUpdate(this);
     }
 
-    // remove(ix: number): void {
-    //     this.arr.
-    // }
-
-    pop(): void {
+    /** remove value from end of arr */
+    public pop(): void {
         this.arr.pop();
 
         this.modifications++;
         this.drawer.pushPositionUpdate(this);
     }
 
-    getLength(): number {
+    public getLength(): number {
         return this.arr.length;
     }
 
-    display(): void {
+    public display(): void {
         this.drawer.setCounter(this.acsesses, this.modifications);
         this.drawer.setPositions(this.arr);
     }
 
     // for debuging purposes
-    toString(): String {
+    public toString(): String {
         let out: String = "[";
         out += String(this.arr[0]);
         for (var i = 1; i < this.arr.length; i++) {

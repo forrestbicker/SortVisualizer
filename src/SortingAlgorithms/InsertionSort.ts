@@ -9,6 +9,7 @@ export class InsertionSort extends ASorter {
         this.comparisonComplexity = "n^2";
         // in place
         this.description = "Insertion sort will repeatedly search an array for the location a next element belongs in until all elements have been sorted.";
+        // advantages: in base case O(n) compares and 0 swaps when array is already sorted
     }
 
     sort(): SortingTask {

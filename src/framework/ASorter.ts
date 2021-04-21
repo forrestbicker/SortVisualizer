@@ -16,18 +16,16 @@ export abstract class ASorter {
 
     abstract sort(): SortingTask;
 
-    execute(): void {
         this.task.randomize();
         this.task.tArr.display()
+    public execute(): void {
         this.sort();
         this.verify();
         this.task.drawer.display();
     }
 
-
-
     /** independent checker to verify the sort has completed correctly */
-    verify(): boolean {
+    public verify(): boolean {
         let prev: number = this.task.tArr.arr[0];
         this.task.drawer.pushReaderUpdate(0, Config.colors.barCorrectColor);
         this.task.drawer.pushClassUpdate(0, 'correct');

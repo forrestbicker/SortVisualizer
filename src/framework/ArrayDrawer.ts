@@ -43,7 +43,8 @@ export class ArrayDrawer { // TODO: each sorting tash should have an array drawe
         this.cHeightUnit = (100 * Config.canvasHeightPercent / max); //
     }
 
-    setCounter(swaps: number, comparisons: number): void {
+
+    private setCounter(swaps: number, comparisons: number): void {
         this.counterCanvas.innerHTML = `
         <text x="20" y="35" style="color:${Config.colors.textColor}">
         Swaps      : ${swaps}
@@ -52,7 +53,7 @@ export class ArrayDrawer { // TODO: each sorting tash should have an array drawe
         </text>`
     }
 
-    setPositions(arr: number[]): void { // todo: fix all array<number> to number<> and the likes
+    private setPositions(arr: number[]): void { // todo: fix all array<number> to number<> and the likes
         let newInnerHTML: string = ""
         for (var i = 0; i < arr.length; i++) {
             let height: number = arr[i] * this.cHeightUnit;
@@ -78,17 +79,17 @@ export class ArrayDrawer { // TODO: each sorting tash should have an array drawe
         this.posCanvas.innerHTML = newInnerHTML;
     }
 
-    setColor(ix: number, color: String): void {
+    private setColor(ix: number, color: string): void {
         let x = this.posCanvas.children[ix];
         x.setAttribute("style", `fill:${color}`);
     }
 
-    setClass(ix: number, className: string): void {
+    private setClass(ix: number, className: string): void {
         let x = this.posCanvas.children[ix];
         x.setAttribute("class", className);
     }
 
-    setReader(ix: number): void {
+    private setReader(ix: number): void {
         let height = this.READER_HEIGHT;
         let width = this.widthUnit;
         let xOffset: number = ix * width;
@@ -105,7 +106,7 @@ export class ArrayDrawer { // TODO: each sorting tash should have an array drawe
         this.lastRead = ix;
     }
 
-    pushCounterUpdate(tArr: TrackableArray): void {
+    public pushCounterUpdate(tArr: TrackableArray): void {
         this.updateStack.push({
             type: UpdateType.COUNTER,
             swaps: tArr.swaps,
@@ -113,7 +114,7 @@ export class ArrayDrawer { // TODO: each sorting tash should have an array drawe
         });
     };
 
-    pushPositionUpdate(tArr: TrackableArray): void {
+    public pushPositionUpdate(tArr: TrackableArray): void {
         if (!tArr.isAux) {
             this.updateStack.push({
                 type: UpdateType.POSITION,
@@ -122,7 +123,7 @@ export class ArrayDrawer { // TODO: each sorting tash should have an array drawe
         }
     };
 
-    pushReaderUpdate(ix: number, highlightColor?: string): void {
+    public pushReaderUpdate(ix: number, highlightColor?: string): void {
         this.updateStack.push({
             type: UpdateType.READER,
             index: ix,
@@ -130,7 +131,7 @@ export class ArrayDrawer { // TODO: each sorting tash should have an array drawe
         })
     }
 
-    pushColorUpdate(ix: number, color: String): void {
+    public pushColorUpdate(ix: number, color: string): void {
         this.updateStack.push({
             type: UpdateType.COLOR,
             index: ix,
@@ -138,7 +139,7 @@ export class ArrayDrawer { // TODO: each sorting tash should have an array drawe
         })
     }
 
-    pushClassUpdate(ix: number, className: string): void {
+    public pushClassUpdate(ix: number, className: string): void {
         this.updateStack.push({
             type: UpdateType.CLASS,
             index: ix,
@@ -146,19 +147,19 @@ export class ArrayDrawer { // TODO: each sorting tash should have an array drawe
         })
     }
 
-    pushBuffer(): void {
+    public pushBuffer(): void {
         this.updateStack.push({
             type: UpdateType.BUFFER,
         })
     }
 
 
-    display(): void {
         let len: number = this.updateStack.length;
+    public display(): void {
         this.displayNext();
     }
 
-    displayNext(): void {
+    private displayNext(): void {
         let update = this.updateStack.shift(); // FIFO queue
         if (update != undefined) {
             switch (update.type) { // TODO: doing this as dicts is hacky but would be better to do as some type of custom object UpdateClass with several subclasses for each type of update

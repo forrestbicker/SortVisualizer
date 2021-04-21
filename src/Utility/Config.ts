@@ -1,5 +1,5 @@
 export class Config {
-    static white: string = "#E2E8F0";
+    private static white: string = "#E2E8F0";
 
     static colors: any = {
         barDefaultColor: Config.white, // default color for array element repersentations
@@ -18,7 +18,8 @@ export class Config {
 
     static canvasWidthPercent = 0.6;
     static canvasHeightPercent = 0.6;
-}    static init() {
+
+    static init() {
         document.documentElement.style.setProperty('--textColor', Config.colors.textColor);
         document.documentElement.style.setProperty('--barDefaultColor', Config.colors.barDefaultColor);
         document.documentElement.style.setProperty('--barSwapColor', Config.colors.barSwapColor);
