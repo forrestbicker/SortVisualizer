@@ -5,9 +5,9 @@ import { Config } from "../Utility/Config";
 /** visual update schedueler */
 export class ArrayDrawer { // TODO: each sorting tash should have an array drawer that is passed down and can tell aux from primary on method call
 
-    counterCanvas: Element;
-    posCanvas: Element;
-    readerCanvas: Element;
+    counterCanvas: HTMLElement;
+    posCanvas: HTMLElement;
+    readerCanvas: HTMLElement;
     delaySlider: HTMLInputElement;
 
     currentLength: number = 0;
@@ -159,6 +159,7 @@ export class ArrayDrawer { // TODO: each sorting tash should have an array drawe
         this.displayNext();
     }
 
+    /** recursive loop that uses async to render all pre-calculated changes  */
     private displayNext(): void {
         let update = this.updateStack.shift(); // FIFO queue
         if (update != undefined) {
