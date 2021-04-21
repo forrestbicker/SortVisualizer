@@ -83,27 +83,14 @@ export class ArrayDrawer { // TODO: each sorting tash should have an array drawe
         x.setAttribute("style", `fill:${color}`);
     }
 
-    setReader(ix: number, highlightColor?: string, permaBeacon?: boolean): void {
-        // default values for optional params
-        if (typeof highlightColor == "undefined") {
-            highlightColor = Config.colors.readerColor
-        }
-
-        if (typeof permaBeacon == "undefined") {
-            permaBeacon = false;
-        }
-
-        if (!permaBeacon) {
-            // clear last color modification
-            this.setColor(this.lastRead, Config.colors.barColor);
-        }
     setClass(ix: number, className: string): void {
         let x = this.posCanvas.children[ix];
         x.setAttribute("class", className);
     }
 
+    setReader(ix: number): void {
         let height = this.READER_HEIGHT;
-        let width = this.cWidthUnit;
+        let width = this.widthUnit;
         let xOffset: number = ix * width;
 
         // bottom left, top mid, bottom right
@@ -112,10 +99,9 @@ export class ArrayDrawer { // TODO: each sorting tash should have an array drawe
             ${xOffset},${height}
             ${xOffset + width / 2},0
             ${xOffset + width},${height}'
-        style="fill: ${highlightColor!}"
+        style="fill: ${Config.colors.readerColor}"
         ></polygon>`;
 
-        this.setColor(ix, highlightColor!);
         this.lastRead = ix;
     }
 
@@ -136,12 +122,11 @@ export class ArrayDrawer { // TODO: each sorting tash should have an array drawe
         }
     };
 
-    pushReaderUpdate(ix: number, highlightColor?: string, permaBeacon?: boolean): void {
+    pushReaderUpdate(ix: number, highlightColor?: string): void {
         this.updateStack.push({
             type: UpdateType.READER,
             index: ix,
             highlightColor: highlightColor,
-            permaBeacon: permaBeacon,
         })
     }
 
@@ -190,7 +175,7 @@ export class ArrayDrawer { // TODO: each sorting tash should have an array drawe
                     this.displayNext();
                     break;
                 case UpdateType.READER: // update location of reader head
-                    this.setReader(update.index, update.highlightColor, update.permaBeacon);
+                    this.setReader(update.index);
                     this.displayNext();
                     break;
                 case UpdateType.COLOR: // change color of bars

@@ -29,14 +29,17 @@ export abstract class ASorter {
     /** independent checker to verify the sort has completed correctly */
     verify(): boolean {
         let prev: number = this.task.tArr.arr[0];
-        this.task.drawer.pushReaderUpdate(0, Config.colors.barCheckHighlight, true)
+        this.task.drawer.pushReaderUpdate(0, Config.colors.barCorrectColor);
+        this.task.drawer.pushClassUpdate(0, 'correct');
         for (var i = 1; i < this.task.tArr.getLength(); i++) {
             let val: number = this.task.tArr.arr[i];
             if (prev <= val) {
-                this.task.drawer.pushReaderUpdate(i, Config.colors.barCheckHighlight, true) // display effect of moving head without modifying counters
+                this.task.drawer.pushReaderUpdate(i, Config.colors.barCheckHighlight); // display effect of moving head without modifying counters
+                this.task.drawer.pushClassUpdate(i, 'correct');
                 this.task.drawer.pushBuffer();
             } else {
-                this.task.drawer.pushReaderUpdate(i, Config.colors.barErrorHighlight, true)
+                this.task.drawer.pushReaderUpdate(i, Config.colors.barIncorrecColor);
+                this.task.drawer.pushClassUpdate(i, 'incorrect');
                 this.task.drawer.pushBuffer();
                 return false
             }
