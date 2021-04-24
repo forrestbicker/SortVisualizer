@@ -7,12 +7,13 @@ import { ArrayDrawer } from "./framework/ArrayDrawer";
 import { SelectionSort } from "./SortingAlgorithms/SelectionSort";
 import { Config } from "./Utility/Config";
 
+let dropdown: HTMLSelectElement;
 let task: SortingTask;
 let drawer: ArrayDrawer;
 let swapLegend: HTMLElement;
 var sorts: { [id: string]: any } = {
-    mergeSort: function (sortingTask: SortingTask): MergeSort {
-        return new MergeSort(sortingTask);
+    selectionSort: function (sortingTask: SortingTask): SelectionSort {
+        return new SelectionSort(sortingTask);
     },
     insertionSort: function (sortingTask: SortingTask): InsertionSort {
         return new InsertionSort(sortingTask);
@@ -20,23 +21,25 @@ var sorts: { [id: string]: any } = {
     heapSort: function (sortingTask: SortingTask): HeapSort {
         return new HeapSort(sortingTask);
     },
-    selectionSort: function (sortingTask: SortingTask): SelectionSort {
-        return new SelectionSort(sortingTask);
-    }
+    mergeSort: function (sortingTask: SortingTask): MergeSort {
+        return new MergeSort(sortingTask);
+    },
 };
 
-let htmlString: string = "";
-for (const sortName in sorts) {
-    htmlString += `<option value='${sortName}'>${sortName}</option>`;
-}
-
-let dropdown: HTMLSelectElement = document.getElementById(
-    "algoSelect"
-)! as HTMLSelectElement;
-dropdown.innerHTML = htmlString;
+function init() {
+    // load css variables from config
     Config.init();
 
-document.getElementById("startButton")!.addEventListener("click", runSort);
+    // populate dropdown with sort options
+    let htmlString: string = "";
+    for (const sortName in sorts) {
+        htmlString += `<option value='${sortName}'>${sortName}</option>`;
+    }
+    dropdown = document.getElementById(
+        "algoSelect"
+    )! as HTMLSelectElement;
+    dropdown.innerHTML = htmlString;
+
     // start swap legend
     swapLegend = document.getElementById("swapLegend")!;
     swapA();
@@ -84,6 +87,7 @@ function generateSorter(task: SortingTask): ASorter {
     return sorter;
 }
 
+init();
 // // docum
 // //
 // // document!.getElementById('root')!.textContent = "hello"
