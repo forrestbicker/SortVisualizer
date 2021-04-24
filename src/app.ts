@@ -7,6 +7,9 @@ import { ArrayDrawer } from "./framework/ArrayDrawer";
 import { SelectionSort } from "./SortingAlgorithms/SelectionSort";
 import { Config } from "./Utility/Config";
 
+let task: SortingTask;
+let drawer: ArrayDrawer;
+let swapLegend: HTMLElement;
 var sorts: { [id: string]: any } = {
     mergeSort: function (sortingTask: SortingTask): MergeSort {
         return new MergeSort(sortingTask);
@@ -46,24 +49,41 @@ function runSort(): void {
     }
 
     // build drawer
-    let drawer = new ArrayDrawer(
+    drawer = new ArrayDrawer(
         document.getElementById("counter")!,
         document.getElementById("position")!,
         document.getElementById("reader")!,
         (document.getElementById("delaySlider")! as HTMLInputElement),
     );
 
-    let selectedSort: string = dropdown.value;
-    var s: ASorter = sorts[selectedSort](new SortingTask(arr, drawer)); // TODO: make a register, on click cancel the sort
-    s.execute();
+    task = new SortingTask(arr, drawer);
+    task.randomize();
+    task.tArr.display();
+
+    // bind commands to buttons
+    document.getElementById("startButton")!.addEventListener("click", runSort);
+    document.getElementById("randomizeButton")!.addEventListener("click", randomizeTask);
+    document.getElementById("reverseButton")!.addEventListener("click", reverseTask);
+
 }
 
-function initalize(counterCanvas: HTMLElement, posCanvas: HTMLElement, readerCanvas: HTMLElement) {
-    posCanvas.setAttribute("width", `${100 * Config.canvasWidthPercent}vw`);
-    posCanvas.setAttribute("height", `${100 * Config.canvasHeightPercent}vh`);
-    counterCanvas.setAttribute("width", `${100 * Config.canvasWidthPercent}vw`);
-    readerCanvas.setAttribute("width", `${100 * Config.canvasWidthPercent}vw`);
+function runSort(): void {
+    generateSorter(task).execute();
 }
+
+}
+
+function randomizeTask(): void {
+    task.randomize();
+    task.tArr.display();
+}
+
+function generateSorter(task: SortingTask): ASorter {
+    let selectedSort: string = dropdown.value;
+    var sorter: ASorter = sorts[selectedSort](task); // TODO: make a register, on click cancel the sort
+    return sorter;
+}
+
 // // docum
 // //
 // // document!.getElementById('root')!.textContent = "hello"

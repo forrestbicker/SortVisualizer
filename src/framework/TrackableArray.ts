@@ -116,6 +116,13 @@ export class TrackableArray {
         this.drawer.setPositions(this.arr);
     }
 
+    public resetCounters(): void {
+        this.acsesses = 0;
+        this.modifications = 0;
+        this.swaps = 0;
+        this.comparisons = 0;
+    }
+
     // for debuging purposes
     public toString(): String {
         let out: String = "[";

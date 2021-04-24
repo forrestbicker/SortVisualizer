@@ -16,9 +16,9 @@ export abstract class ASorter {
 
     abstract sort(): SortingTask;
 
-        this.task.randomize();
-        this.task.tArr.display()
     public execute(): void {
+        this.task.tArr.display();
+        this.task.tArr.resetCounters();
         this.sort();
         this.verify();
         this.task.drawer.display();
