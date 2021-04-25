@@ -29,6 +29,7 @@ var sorts: { [id: string]: any } = {
 function init() {
     // load css variables from config
     Config.init();
+    document.getElementById("canvas")?.setAttribute("style", `width:${100 * Config.canvasWidthPercent}vw`);
 
     // populate dropdown with sort options
     let htmlString: string = "";

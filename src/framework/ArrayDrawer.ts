@@ -10,11 +10,13 @@ export class ArrayDrawer { // TODO: each sorting tash should have an array drawe
     readerCanvas: HTMLElement;
     delaySlider: HTMLInputElement;
 
-    currentLength: number = 0;
-    currentMax: number = 0;
+    currentLength: number = -1;
+    currentMax: number = -1;
 
-    cWidthUnit: number = 0;
-    cHeightUnit: number = 0;
+    widthUnit: number = -1;
+    heightUnit: number = -1;
+    canvasWidth: number = -1;
+    canvasHeight: number = -1;
 
     updateStack: any[];
 
@@ -30,9 +32,6 @@ export class ArrayDrawer { // TODO: each sorting tash should have an array drawe
         this.delaySlider = delaySlider;
 
         this.updateStack = [];
-
-        let w: number = Math.floor(Config.canvasWidthPercent * document.documentElement.clientWidth);
-        let h: number = Math.floor(Config.canvasHeightPercent * document.documentElement.clientHeight);
 
         readerCanvas.setAttribute("height", String(this.READER_HEIGHT));
     }
@@ -56,24 +55,31 @@ export class ArrayDrawer { // TODO: each sorting tash should have an array drawe
     private setPositions(arr: number[]): void { // todo: fix all array<number> to number<> and the likes
         let newInnerHTML: string = ""
         for (var i = 0; i < arr.length; i++) {
-            let height: number = arr[i] * this.cHeightUnit;
-            // newInnerHTML += `
-            //     <rect
-            //     width="${this.cWidthUnit}"
-            //     height="${height}"
-            //     x="${i * this.cWidthUnit}"
-            //     y="${canvasHeight - height}"
-            //     style="fill: ${Config.colors.barColor}">
-            //     </rect>`;
             newInnerHTML += `
                 <rect
-                width="${this.cWidthUnit}vw"
-                height="${height}vh"
-                x="${i * this.cWidthUnit * (15/16)}vw"
-                y="${100 * Config.canvasHeightPercent - height}vh"
-                style="fill: ${Config.colors.barColor}">
-                </rect>
-            `; // would be nice to figure out how to get styling working by CSS classes such as rect.default, rect.comparing, rect.swaping but need to figure out how to dynamically change colors that way
+                style="
+                height: calc(${arr[i]} * var(--heightUnit));
+                x: calc(${i} * var(--widthUnit));
+                y: calc(var(--canvasHeight) - ${arr[i]} * var(--heightUnit));
+                "
+                class="default">
+                </rect>`;
+            // newInnerHTML += `
+            //     <rect
+            //     height="calc(${arr[i]} * var(--heightUnit))"
+            //     x="calc(${i} * var(--widthUnit))"
+            //     y="calc(${this.canvasHeight} - ${arr[i]} * var(--heightUnit))"
+            //     class="default">
+            //     </rect>`;
+            // newInnerHTML += `
+            //     <rect
+            //     width="${this.widthUnit}vw"
+            //     height="${height}vh"
+            //     x="${i * this.widthUnit * (15 / 16)}vw"
+            //     y="${100 * Config.canvasHeightPercent - height}vh"
+            //     class="default">
+            //     </rect>
+            // `; // would be nice to figure out how to get styling working by CSS classes such as rect.default, rect.comparing, rect.swaping but need to figure out how to dynamically change colors that way
 
         }
         this.posCanvas.innerHTML = newInnerHTML;
