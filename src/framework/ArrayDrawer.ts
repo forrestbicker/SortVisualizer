@@ -40,6 +40,25 @@ export class ArrayDrawer { // TODO: each sorting tash should have an array drawe
         this.currentLength = length;
         this.cWidthUnit = (100 * Config.canvasWidthPercent / length); // assumes len = max - 1 (true if is consecuitive range of ints)
         this.cHeightUnit = (100 * Config.canvasHeightPercent / max); //
+    private resizeDisplay(): void {
+        // calculate new dimensions
+        this.canvasWidth = Math.floor(Config.canvasWidthPercent * document.documentElement.clientWidth);
+        this.canvasHeight = Math.floor(Config.canvasHeightPercent * document.documentElement.clientHeight);
+
+        // resize internal width/height units
+        this.widthUnit = Math.floor(this.canvasWidth / this.currentLength);
+        this.heightUnit = Math.floor(this.canvasHeight / this.currentMax);
+
+        // set css variables
+        document.documentElement.style.setProperty('--widthUnit', String(this.widthUnit) + "px");
+        document.documentElement.style.setProperty('--heightUnit', String(this.heightUnit) + "px");
+        document.documentElement.style.setProperty('--canvasHeight', String(this.canvasHeight) + "px");
+
+        // resize canvas dimensions
+        this.posCanvas.setAttribute("width", `${this.canvasWidth}px`);
+        this.posCanvas.setAttribute("height", `${this.canvasHeight}px`);
+        this.counterCanvas.setAttribute("width", `${this.canvasWidth}px`);
+        this.readerCanvas.setAttribute("width", `${this.canvasWidth}px`);
     }
 
 
