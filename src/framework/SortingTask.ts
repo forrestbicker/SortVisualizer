@@ -12,7 +12,7 @@ export class SortingTask {
 
     constructor(array: Array<number>, drawer: ArrayDrawer) {
         this.drawer = drawer;
-        this.drawer.setPrimaryArrayLength(array.length, Util.max(array));
+        this.drawer.setArrayData(array.length, Util.max(array));
 
         this.tArr = new TrackableArray(array, this.drawer, false);
         this.auxiliaryArrs = new Array<TrackableArray>();

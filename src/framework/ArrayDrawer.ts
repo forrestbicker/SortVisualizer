@@ -34,12 +34,15 @@ export class ArrayDrawer { // TODO: each sorting tash should have an array drawe
         this.updateStack = [];
 
         readerCanvas.setAttribute("height", String(this.READER_HEIGHT));
+        window.addEventListener('resize', () => { this.resizeDisplay() }, true);
     }
 
-    setPrimaryArrayLength(length: number, max: number): void {
+    public setArrayData(length: number, max: number): void {
         this.currentLength = length;
-        this.cWidthUnit = (100 * Config.canvasWidthPercent / length); // assumes len = max - 1 (true if is consecuitive range of ints)
-        this.cHeightUnit = (100 * Config.canvasHeightPercent / max); //
+        this.currentMax = max;
+        this.resizeDisplay();
+    }
+
     private resizeDisplay(): void {
         // calculate new dimensions
         this.canvasWidth = Math.floor(Config.canvasWidthPercent * document.documentElement.clientWidth);
