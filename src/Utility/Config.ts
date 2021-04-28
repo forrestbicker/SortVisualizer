@@ -10,13 +10,12 @@ export class Config {
         barCorrectColor: "#9AE6B4", // color for correctly placed element in validation
         barIncorrecColor: "#FEB2B2", // color for incorrectly placed element in validation
 
-        writerColor: "#90cdf4",
-        readerColor: "#FFA5FF",
+        readerColor: "#FFA564", // color of the moving head triangle
 
         textColor: Config.white,
     };
 
-    static canvasWidthPercent = 0.6;
+    static canvasWidthPercent = 0.5;
     static canvasHeightPercent = 0.6;
 
     static init() {

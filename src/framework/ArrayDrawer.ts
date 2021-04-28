@@ -24,7 +24,6 @@ export class ArrayDrawer { // TODO: each sorting tash should have an array drawe
 
     lastRead: number = 0;
 
-
     constructor(counterCanvas: HTMLElement, posCanvas: HTMLElement, readerCanvas: HTMLElement, delaySlider: HTMLInputElement) {
         this.counterCanvas = counterCanvas;
         this.posCanvas = posCanvas;
@@ -182,7 +181,6 @@ export class ArrayDrawer { // TODO: each sorting tash should have an array drawe
     }
 
 
-        let len: number = this.updateStack.length;
     public display(): void {
         this.displayNext();
     }
@@ -192,6 +190,7 @@ export class ArrayDrawer { // TODO: each sorting tash should have an array drawe
         let update = this.updateStack.shift(); // FIFO queue
         if (update != undefined) {
             switch (update.type) { // TODO: doing this as dicts is hacky but would be better to do as some type of custom object UpdateClass with several subclasses for each type of update
+                // frame updates are encoded via this UpdateType mechanism earlier, but actual manipulation of elements is executed on runtime
                 case UpdateType.COUNTER: // update counter values
                     if (update.isAux) { // if is is an aux arr
                         // this.setCounter(0, 0);
@@ -217,7 +216,8 @@ export class ArrayDrawer { // TODO: each sorting tash should have an array drawe
                     this.displayNext();
                     break;
                 case UpdateType.BUFFER:
-                    setTimeout(() => { this.displayNext() }, 256 - parseFloat(this.delaySlider.value));
+                    setTimeout(() => { this.displayNext() }, 256 - parseFloat(this.delaySlider.value)); // when a buffer is hit, wait for a period specified by the slider, then display the next visual updates
+                    break;
             }
         }
     }

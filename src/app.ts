@@ -45,9 +45,8 @@ function init() {
     swapLegend = document.getElementById("swapLegend")!;
     swapA();
 
-function runSort(): void {
     // create arr
-    var arr: Array<number> = [];
+    var arr: number[] = [];
     for (var i = 1; i <= 32; i++) {
         arr.push(i);
     }
