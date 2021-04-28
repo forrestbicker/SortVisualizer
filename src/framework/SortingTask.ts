@@ -39,6 +39,11 @@ export class SortingTask {
 
     }
 
+    /** sets array in reversed of sorted order */
+    public reverse(): void {
+        this.tArr.arr = this.tArr.arr.sort((a, b) => b - a);
+    }
+
     // updateCanvas(): void {
     //     // this.canvas.innerHTML = "";
     //     // this.updatePositions();

@@ -75,6 +75,9 @@ function runSort(): void {
     generateSorter(task).execute();
 }
 
+function reverseTask(): void {
+    task.reverse();
+    task.tArr.display();
 }
 
 function randomizeTask(): void {
