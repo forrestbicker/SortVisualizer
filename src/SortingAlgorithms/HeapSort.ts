@@ -14,14 +14,14 @@ export class HeapSort extends ASorter {
     }
 
     sort(): SortingTask {
-        let n: number = this.task.tArr.getLength()
+        let n: number = this.getLength()
 
         for (let i = Math.floor(n / 2) - 1; i >= 0; i--) {
             this.maxHeapify(i, n);
         }
 
         for (let i = n - 1; i > 0; i--) {
-            this.task.tArr.swap(0, i)
+            this.swap(0, i)
             this.maxHeapify(0, i)
         }
 
@@ -34,16 +34,16 @@ export class HeapSort extends ASorter {
         let right = TreeUtil.getRightChildIx(root);
 
         // if left child exists and is greater than root
-        if (left < end && this.task.tArr.compare(largest, left)) {
+        if (left < end && this.compare(largest, left)) {
             largest = left;
         }
 
-        if (right < end && this.task.tArr.compare(largest, right)) {
+        if (right < end && this.compare(largest, right)) {
             largest = right;
         }
 
         if (largest != root) {
-            this.task.tArr.swap(largest, root)
+            this.swap(largest, root)
             this.maxHeapify(largest, end);
         }
     }

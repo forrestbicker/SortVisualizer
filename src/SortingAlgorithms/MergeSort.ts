@@ -14,7 +14,7 @@ export class MergeSort extends ASorter {
     }
 
     sort(): SortingTask {
-        this.mergeSort(0, this.task.tArr.getLength() - 1);
+        this.mergeSort(0, this.getLength() - 1);
         return this.task;
     }
 
@@ -37,11 +37,11 @@ export class MergeSort extends ASorter {
 
         // populate coppies
         for (var i: number = start; i <= mid; i++) {
-            left.push(this.task.tArr.get(i));
+            left.push(this.get(i));
         }
 
         for (var i: number = mid + 1; i <= end; i++) {
-            right.push(this.task.tArr.get(i));
+            right.push(this.get(i));
         }
 
         // crawlers
@@ -53,23 +53,23 @@ export class MergeSort extends ASorter {
             let leftValue: number = left.get(l);
             let rightValue: number = right.get(r);
             if (leftValue <= rightValue) {
-                this.task.tArr.set(k, leftValue);
+                this.set(k, leftValue);
                 l++;
             } else {
-                this.task.tArr.set(k, rightValue);
+                this.set(k, rightValue);
                 r++;
             }
             k++;
         }
 
         while (l + start <= mid) {
-            this.task.tArr.set(k, left.get(l));
+            this.set(k, left.get(l));
             l++;
             k++;
         }
 
         while (r + mid + 1 <= end) {
-            this.task.tArr.set(k, right.get(r));
+            this.set(k, right.get(r));
             r++;
             k++;
         }

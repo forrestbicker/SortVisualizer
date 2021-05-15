@@ -45,5 +45,24 @@ export abstract class ASorter {
         }
         return true
     }
+	public swap(a: number, b: number): void {
+		this.task.tArr.swap(a, b);
+	}
+
+	public compare(a: number, b: number): boolean {
+		return this.task.tArr.compare(a, b);
+	}
+
+	public getLength(): number{
+		return this.task.tArr.getLength();
+	}
+
+	public set(ix: number, value: number): void {
+		this.task.tArr.set(ix, value);
+	}
+
+	public get(ix: number): number {
+		return this.task.tArr.get(ix);
+	}
 }
 

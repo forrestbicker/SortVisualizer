@@ -11,14 +11,14 @@ export class SelectionSort extends ASorter {
     }
 
     sort(): SortingTask {
-        for (var cutoff = 0; cutoff < this.task.tArr.getLength(); cutoff++) {
+        for (var cutoff = 0; cutoff < this.getLength(); cutoff++) {
             let minIx = cutoff;
-            for (var i = cutoff; i < this.task.tArr.getLength(); i++) {
-                if (this.task.tArr.compare(i, minIx)) {
+            for (var i = cutoff; i < this.getLength(); i++) {
+                if (this.compare(i, minIx)) {
                     minIx = i;
                 }
             }
-            this.task.tArr.swap(minIx, cutoff);
+            this.swap(minIx, cutoff);
         }
         return this.task;
     }

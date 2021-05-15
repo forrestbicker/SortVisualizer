@@ -13,17 +13,17 @@ export class InsertionSort extends ASorter {
     }
 
     sort(): SortingTask {
-        for (var i = 1; i < this.task.tArr.getLength(); i++) {
+        for (var i = 1; i < this.getLength(); i++) {
             // at the start of the loop, arr is sorted up to ix i (exclusive)
             let j = i - 1; 
             // we find where to insert i so the arr is sorted up to ix i (inclusive)
-            while (j >= 0 && this.task.tArr.compare(i, j)) {
+            while (j >= 0 && this.compare(i, j)) {
                 j--;
             }
             j++;
             // once i's sorted location is found, we need to swap elements back up to shift the array over
             while (j < i) {
-                this.task.tArr.swap(j, i);
+                this.swap(j, i);
                 j++;
             }
         }
