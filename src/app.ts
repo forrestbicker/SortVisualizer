@@ -2,6 +2,7 @@ import { SortingTask } from "./framework/SortingTask";
 import { ASorter } from "./framework/ASorter";
 import { MergeSort } from "./SortingAlgorithms/MergeSort";
 import { InsertionSort } from "./SortingAlgorithms/InsertionSort";
+import { BinaryInsertionSort } from "./SortingAlgorithms/BinaryInsertionSort";
 import { HeapSort } from "./SortingAlgorithms/HeapSort";
 import { ArrayDrawer } from "./framework/ArrayDrawer";
 import { SelectionSort } from "./SortingAlgorithms/SelectionSort";
@@ -15,9 +16,12 @@ var sorts: { [id: string]: any } = {
     selectionSort: function (sortingTask: SortingTask): SelectionSort {
         return new SelectionSort(sortingTask);
     },
-    insertionSort: function (sortingTask: SortingTask): InsertionSort {
-        return new InsertionSort(sortingTask);
-    },
+	insertionSort: function (sortingTask: SortingTask): InsertionSort {
+		return new InsertionSort(sortingTask);
+	},
+	binaryInsertionSort: function (sortingTask: SortingTask): BinaryInsertionSort {
+		return new BinaryInsertionSort(sortingTask);
+	},
     heapSort: function (sortingTask: SortingTask): HeapSort {
         return new HeapSort(sortingTask);
     },
