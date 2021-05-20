@@ -25,9 +25,12 @@ var sorts: { [id: string]: any } = {
     heapSort: function (sortingTask: SortingTask): HeapSort {
         return new HeapSort(sortingTask);
     },
-    mergeSort: function (sortingTask: SortingTask): MergeSort {
-        return new MergeSort(sortingTask);
-    },
+	mergeSort: function (sortingTask: SortingTask): MergeSort {
+		return new MergeSort(sortingTask);
+	},
+	bubbleSort: function (sortingTask: SortingTask): BubbleSort {
+		return new BubbleSort(sortingTask);
+	},
 };
 
 function init() {
